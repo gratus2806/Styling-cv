@@ -1,0 +1,341 @@
+<!--Rating Starts-->
+
+<div *ngIf="add">
+<<<<<<< HEAD
+        <!-- <p>Languages</p> -->
+        <div class="row" matchHeight="card">
+            <div class="col-12">
+                <div class="card">
+                    <form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)" class=" w-100">
+                        <div class="card-header">
+                            <h4 class="card-title">Software</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <label for="basic-url">Software Skill</label>
+                                        <div class="input-group">
+                                            <input class="form-control" placeholder="Enter Your Software Name" id="" type="text"
+                                                (ngModelChange)="somethingChanged($event)" name="name" [(ngModel)]="selectedsoftware.name">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <p>Strength from 1 to 10</p>
+                                        <div class="input-group d-flex  flex-nowrap">
+                                            <div>
+                                                <ngb-rating name="rate" [(rate)]="selectedsoftware.rate">
+                                                    <ng-template let-fill="fill">
+                                                        <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                                                    </ng-template>
+                                                </ngb-rating>
+                                            </div>
+                                            <h5 class="d-inline-block mx-1 bg-primary white p-1">{{selectedsoftware.rate}}/10
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div class="card-footer"> <a class="float-left btn btn-flat mr-1 btn-warning"
+                                href="javascript:void(0)"></a>
+                            <button class=" float-left btn  mr-1   btn-raised  btn-secondary" (click)='onBack()'>Close</button>
+                            <div class="float-right ">
+                                <button class="btn  mr-1   btn-raised  btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div *ngIf="edit">
+        <!-- <p>Languages</p> -->
+        <div class="row" matchHeight="card">
+            <div class="col-12">
+                <div class="card">
+                    <form #editForm="ngForm" (ngSubmit)="onEditSubmit(editForm)" class=" w-100" id="{{selectedsoftware.ids}}">
+                        <input type="hidden" name="ids" [(ngModel)]="selectedsoftware.ids">
+                        <div class="card-header">
+                            <h4 class="card-title">Software</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <label for="basic-url">Software Skill</label>
+                                        <div class="input-group">
+                                            <input class="form-control" placeholder="Enter Your Software Name" id="" type="text"
+                                                (ngModelChange)="somethingChanged($event)" name="name" [(ngModel)]="selectedsoftware.name">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <p>Strength from 1 to 10</p>
+                                        <div class="input-group d-flex  flex-nowrap">
+                                            <div>
+                                                <ngb-rating name="rate" [(rate)]="selectedsoftware.rate">
+                                                    <ng-template let-fill="fill">
+                                                        <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                                                    </ng-template>
+                                                </ngb-rating>
+                                            </div>
+                                            <h5 class="d-inline-block mx-1 bg-primary white p-1">{{selectedsoftware.rate}}/10
+                                            </h5>
+                                        </div>
+=======
+    <!-- <p>Languages</p> -->
+    <div class="row" matchHeight="card">
+        <div class="col-12">
+            <div class="card">
+                <form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)" class=" w-100">
+                    <div class="card-header">
+                        <h4 class="card-title">Software</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 col-md-6">
+                                    <label for="basic-url">Software Skill</label>
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Enter Your Software Name" id="" type="text"
+                                            (ngModelChange)="somethingChanged($event)" name="name" [(ngModel)]="selectedsoftware.name">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 col-md-6">
+                                    <p>Strength from 1 to 10</p>
+                                    <div class="input-group d-flex  flex-nowrap">
+                                        <div>
+                                            <ngb-rating name="rate" [(rate)]="selectedsoftware.rate">
+                                                <ng-template let-fill="fill">
+                                                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                                                </ng-template>
+                                            </ngb-rating>
+                                        </div>
+                                        <h5 class="d-inline-block mx-1 bg-primary white p-1">{{selectedsoftware.rate}}/10
+                                        </h5>
+>>>>>>> 38fa663700550e89d9cad971b082b1ac6acd2228
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+<<<<<<< HEAD
+    
+                        </div>
+                        <div class="card-footer"> <a class="float-left btn btn-flat mr-1 btn-warning"
+                                href="javascript:void(0)"></a>
+                            <button class=" float-left btn  mr-1   btn-raised  btn-secondary" (click)='onBack()'>Close</button>
+                            <div class="float-right ">
+                                <button class="btn  mr-1   btn-raised  btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+=======
+
+
+                        </div>
+
+                    </div>
+                    <div class="card-footer"> <a class="float-left btn btn-flat mr-1 btn-warning"
+                            href="javascript:void(0)"></a>
+                        <button class=" float-left btn  mr-1   btn-raised  btn-secondary" (click)='onBack()'>Close</button>
+                        <div class="float-right ">
+                            <button class="btn  mr-1   btn-raised  btn-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="edit">
+    <!-- <p>Languages</p> -->
+    <div class="row" matchHeight="card">
+        <div class="col-12">
+            <div class="card">
+                <form #editForm="ngForm" (ngSubmit)="onEditSubmit(editForm)" class=" w-100" id="{{selectedsoftware.ids}}">
+                    <input type="hidden" name="ids" [(ngModel)]="selectedsoftware.ids">
+                    <div class="card-header">
+                        <h4 class="card-title">Software</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 col-md-6">
+                                    <label for="basic-url">Software Skill</label>
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Enter Your Software Name" id="" type="text"
+                                            (ngModelChange)="somethingChanged($event)" name="name" [(ngModel)]="selectedsoftware.name">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 col-md-6">
+                                    <p>Strength from 1 to 10</p>
+                                    <div class="input-group d-flex  flex-nowrap">
+                                        <div>
+                                            <ngb-rating name="rate" [(rate)]="selectedsoftware.rate">
+                                                <ng-template let-fill="fill">
+                                                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                                                </ng-template>
+                                            </ngb-rating>
+                                        </div>
+                                        <h5 class="d-inline-block mx-1 bg-primary white p-1">{{selectedsoftware.rate}}/10
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="card-footer"> <a class="float-left btn btn-flat mr-1 btn-warning"
+                            href="javascript:void(0)"></a>
+                        <button class=" float-left btn  mr-1   btn-raised  btn-secondary" (click)='onBack()'>Close</button>
+                        <div class="float-right ">
+                            <button class="btn  mr-1   btn-raised  btn-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+>>>>>>> 38fa663700550e89d9cad971b082b1ac6acd2228
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div *ngIf="list">
+    
+    
+        <div class="card">
+            <div class="card-header d-flex justify-content-between ">
+                <div class="card-header-icon d-inline-block	float-left font-medium-2"> <i class="{{sectionicon}} mr-1 p-1 "></i>
+                </div>
+                <div class="d-inline-block flex-grow-1">
+                    <h4 class="card-title text-bold-500 primary">{{sectionname}}</h4>
+                    <!-- <h6 class="card-subtitle ">Publish the languages you which are proficient, Add the languages which you can communicate oral and written effectively.
+                    </h6> -->
+                </div>
+    
+                <div ngbDropdown placement="bottom-right" class="d-inline-block actions float-right">
+                    <i class="ft-more-vertical noArrow mr-1 text-muted" ngbDropdownToggle id="CardSetting"></i>
+                    <div ngbDropdownMenu aria-labelledby="CardSetting">
+                        <!-- <button class="dropdown-item" (click)="onDataChange()">Rename</button> -->
+                        <!-- <button class="dropdown-item" (click)="onChangeIcon(content)">Chnage data (PLz suggest a name)</button> -->
+                        <button class="dropdown-item" (click)="editWorkexpErience()">Chnage data (PLz suggest a name)</button>
+    
+                        <button class="dropdown-item">Hide</button>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item">Delete</button>
+                    </div>
+                </div>
+            </div>
+<<<<<<< HEAD
+    
+    
+            <div class="card-body" aria-expanded="true">
+                <div class="card-block">
+                    <div class="drag-drop-wrapper">
+                        <ul class="list-group list-group-flush drag-drop-container" [dragula]="MANY_ITEMS"
+                            [(dragulaModel)]="softwareArray" id="left">
+                            <li *ngFor="let software of softwareArray; let i = index"
+                                class="list-group-item">
+    
+                                <div class="d-flex pl-3 justify-content-between align-content-center list-item-dragable">
+                                    <div class="itemNumber position-absolute">
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <a href="">
+                                            <h5 class="font-medium-2 text-bold-500 black">{{software.name}} <span
+                                                    class=" text-muted">({{(software.rate || software.proficiency) *10 }}%)</span>
+                                            </h5>
+                                        </a>
+    
+                                        <div>
+                                            <ngb-rating name="rate" [(rate)]="software.rate">
+                                                <ng-template let-fill="fill"> <span class="star"
+                                                        [class.filled]="fill === 100">&#9733;</span> </ng-template>
+                                            </ngb-rating>
+    
+                                        </div>
+    
+    
+                                    </div>
+                                    <div class="actions">
+                                        <i class="ft-edit mr-1 info p-1" (click)="onEdit(software)" placement="top"
+                                            ngbTooltip="Edit"></i>
+                                        <i class="ft-copy mr-1 green p-1" placement="top" (click)="onClone(software)"
+                                            ngbTooltip="Copy"></i>
+                                        <i class="ft-trash-2 danger p-1" placement="top" (click)="onDelete(i)"
+                                            ngbTooltip="Delete"></i>
+                                        <i class="handle ft-move mr-1 grey p-1 cursorMove" placement="top"
+                                            ngbTooltip="Move"></i>
+                                    </div>
+    
+=======
+        </div>
+
+
+        <div class="card-body" aria-expanded="true">
+            <div class="card-block">
+                <div class="drag-drop-wrapper">
+                    <ul class="list-group list-group-flush drag-drop-container" [dragula]="MANY_ITEMS"
+                        [(dragulaModel)]="softwareArray" id="left">
+                        <li *ngFor="let software of softwareArray; let i = index"
+                            class="list-group-item">
+
+                            <div class="d-flex pl-3 justify-content-between align-content-center list-item-dragable">
+                                <div class="itemNumber position-absolute">
+                                </div>
+                                <div class="flex-grow-1">
+                                    <a href="">
+                                        <h5 class="font-medium-2 text-bold-500 black">{{software.name}} <span
+                                                class=" text-muted">({{(software.rate || software.proficiency) *10 }}%)</span>
+                                        </h5>
+                                    </a>
+
+                                    <div>
+                                        <ngb-rating name="rate" [(rate)]="software.rate">
+                                            <ng-template let-fill="fill"> <span class="star"
+                                                    [class.filled]="fill === 100">&#9733;</span> </ng-template>
+                                        </ngb-rating>
+
+                                    </div>
+
+
+                                </div>
+                                <div class="actions">
+                                    <i class="ft-edit mr-1 info p-1" (click)="onEdit(software)" placement="top"
+                                        ngbTooltip="Edit"></i>
+                                    <i class="ft-copy mr-1 green p-1" placement="top" (click)="onClone(software)"
+                                        ngbTooltip="Copy"></i>
+                                    <i class="ft-trash-2 danger p-1" placement="top" (click)="onDelete(i)"
+                                        ngbTooltip="Delete"></i>
+                                    <i class="handle ft-move mr-1 grey p-1 cursorMove" placement="top"
+                                        ngbTooltip="Move"></i>
+>>>>>>> 38fa663700550e89d9cad971b082b1ac6acd2228
+                                </div>
+                            </li>
+    
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="float-right ">
+                    <a class="btn  mr-1 btn-raised  btn-info" (click)='onAddData()'> <i class="ft-plus mr-1"></i> Add New
+                        Software </a>
+                </div>
+            </div>
+        </div>
+    
+    
+        <!-- <button (click)='onSubmit(dataSource)'>Submit Language</button> -->
+    
+    </div>
+    <!--Rating Ends-->

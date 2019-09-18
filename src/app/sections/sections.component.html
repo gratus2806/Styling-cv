@@ -1,0 +1,116 @@
+<!-- this should the the sections template holder -->
+
+
+<div class="card">
+        <div class="card-header d-flex justify-content-between ">
+            <div class="card-header-icon d-inline-block	float-left font-medium-2"> <i class="ft-bell mr-1 p-1 "></i>
+            </div>
+            <div class="d-inline-block flex-grow-1">
+                <h4 class="card-title text-bold-500 primary">Work History</h4>
+                <h6 class="card-subtitle ">This section is the heart of your resume so make sure you write it well.
+                    Follow these simple guidelines:
+                </h6>
+            </div>
+
+            <div ngbDropdown placement="bottom-right" class="d-inline-block actions float-right">
+                <i class="ft-more-vertical noArrow mr-1 text-muted" ngbDropdownToggle id="CardSetting"></i>
+                <div ngbDropdownMenu aria-labelledby="CardSetting">
+                    <button class="dropdown-item">Rename</button>
+                    <button class="dropdown-item">Change Icon</button>
+                    <button class="dropdown-item">Hide</button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body" aria-expanded="true">
+            <div class="card-block">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-content-center">
+                        <div class="actions"> <i class="ft-move mr-1 grey p-1"></i>
+                            <!-- <i class="ft-menu mr-1 info p-1"></i> -->
+                        </div>
+                        <div class="flex-grow-1">
+                            <a href="">
+                                <h5 class="font-medium-2 text-bold-500 black"> Wipro </h5>
+                            </a>
+                            <h6 class="card-subtitle "> Duration - <em class="blue">10th May 2002 - 15th June
+                                    2003</em> </h6>
+                        </div>
+                        <div class="actions"> <i class="ft-edit mr-1 info p-1" placement="top"
+                                ngbTooltip="Edit"></i> <i class="ft-copy mr-1 green p-1" placement="top"
+                                ngbTooltip="Copy"></i> <i class="ft-trash-2 danger p-1" placement="top"
+                                ngbTooltip="Delete"></i> </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-content-center">
+                        <div class="actions"> <i class="ft-move mr-1 grey p-1"></i>
+                            <!-- <i class="ft-menu mr-1 info p-1"></i> -->
+                        </div>
+                        <div class="flex-grow-1">
+                            <a href="">
+                                <h5 class="font-medium-2 text-bold-500 black"> PenguinApps </h5>
+                            </a>
+                            <h6 class="card-subtitle "> Duration- <em class="blue">10th Jan 2005 - 15th April
+                                    2008</em> </h6>
+                        </div>
+                        <div class="actions"> <i class="ft-edit mr-1 info p-1" placement="top"
+                                ngbTooltip="Edit"></i> <i class="ft-copy mr-1 green p-1" placement="top"
+                                ngbTooltip="Copy"></i> <i class="ft-trash-2 danger p-1" placement="top"
+                                ngbTooltip="Delete"></i> </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-footer">
+
+
+
+            <div class="float-right ">
+                <a class="btn  mr-1 btn-raised  btn-info" (click)="onAdd()"> <i class="ft-plus mr-1"></i> Add New
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+<!--	  section preview-->
+<div class="card">
+    <div class="card-header">
+        <div class="card-header-icon d-inline-block	float-left font-medium-2"> <i class="ft-bell mr-1 p-1 "></i> </div>
+        <div class="d-inline-block"> 
+            <h4 class="card-title text-bold-500 primary">Education History ---- this should be dynamic </h4>
+            <h6 class="card-subtitle ">This section is the heart of your resume so make sure you write it well. Follow these simple guidelines:
+            </h6>
+        </div>
+        <div ngbDropdown placement="bottom-right" class="d-inline-block actions float-right"> <i class="ft-more-vertical mr-1 text-muted" ngbDropdownToggle id="CardSetting"></i>
+            <div ngbDropdownMenu aria-labelledby="CardSetting">
+                <button class="dropdown-item">Rename</button>
+                <button class="dropdown-item">Change Icon</button>
+                <button class="dropdown-item">Hide</button>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-item">Delete</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" aria-expanded="true">
+        <div class="card-block">
+            <!--	  //section preview-->
+
+            here should be the sub section list
+            <!--	  section form add new-->
+
+
+        </div>
+    </div>
+    <div class="card-footer"> <span class="text-muted float-left">ABCD</span>
+        <div class="float-right ">
+            <a class="btn  mr-1 btn-sm btn-raised  btn-info" (click)="onAdd()"> <i class="ft-plus mr-1"></i> add new </a>
+        </div>
+    </div>
+</div>

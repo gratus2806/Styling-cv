@@ -1,0 +1,14 @@
+.iconSet
+{
+    width: 55px;
+    height: 67px;
+    -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+.iconSet:hover .border
+{
+    border-color:#1cb1bb !important
+}

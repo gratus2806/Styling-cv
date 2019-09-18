@@ -1,0 +1,33 @@
+<div class="row text-left">
+    <div class="col-sm-12">
+        <div class="content-header">Summary</div>
+        <div class="fonticon-wrap" (click)="onEdit(i)">
+            <i class="ft-edit-3"></i>
+        </div>
+        <div class="fonticon-wrap" (click)="onDelete(i)">
+            <i class="ft-trash-2"></i>
+        </div>
+        <div class="fonticon-wrap">
+            <i class="ft-settings"></i>
+        </div>
+    </div>
+</div>
+<!-- Default Quill Editor starts -->
+<section id="quill-editor">
+    <div class="card text-left">
+        <div class="card-header">
+            <h4>Summary</h4>
+        </div>
+        <div class="card-block">
+            <form #editForm="ngForm" (ngSubmit)="onEditSubmit(editForm)" class=" w-100">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <quill-editor [style]="{height: '200px'}" [modules]="config" name="about" [(ngModel)]='about' (ngModelChange)="summaryChange($event)" (onEditorCreated)="setFocus($event)"></quill-editor>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Quill Editor without toolbar ends -->
+
+</section>

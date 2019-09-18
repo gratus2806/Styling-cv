@@ -1,0 +1,46 @@
+
+        .page-loading {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            overflow: hidden;
+            background: #f2f2f2;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+            z-index: 9999;
+        }
+        
+        .loading-icon,
+        .LogingText {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 60px;
+            height: 60px;
+            margin-left: -30px;
+            margin-top: -61px;
+        }
+        
+        .LogingText {
+            min-width: 400px;
+            height: 44px;
+            margin-left: -200px;
+            margin-top: 19px;
+            text-align: center;
+            line-height: 2.7 !important;
+            max-width: 100%;
+
+        }
+        
+        .LogingText h5 {
+            line-height: 1.7 !important
+        }
+        
+        app-root:empty~.page-loading {
+            opacity: 1;
+            z-index: 1;
+        }
+
+ 

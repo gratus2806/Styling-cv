@@ -1,0 +1,46 @@
+<div class="row text-left">
+    <div class="col-sm-12">
+        <div class="content-header">Summary</div>
+        <p class="content-sub-header">
+                A resume summary is a short, snappy introduction highlighting your career progress, achievements and skill set.
+                <a class="info"> <i class="ft-help-circle"></i> show more</a>
+
+                <!-- <div class="helpContainter" *ngIf="showHelp">
+                        test
+                </div> -->
+        </p>
+
+    </div>
+</div>
+<!-- Default Quill Editor starts -->
+<section id="quill-editor">
+    <div class="card text-left">
+        <div class="card-header d-flex justify-content-between ">
+            <h4>{{sectionname}}</h4>
+            <div ngbDropdown placement="bottom-right" class="d-inline-block actions float-right">
+                <i class="ft-more-vertical noArrow mr-1 text-muted" ngbDropdownToggle id="CardSetting"></i>
+                <div ngbDropdownMenu aria-labelledby="CardSetting">
+                    <button class="dropdown-item" (click)="editWorkexpErience()">Chnage data (PLz suggest a
+                                name)</button>
+                    <button class="dropdown-item" (click)="onRenameSection()">Rename</button>
+                    <button class="dropdown-item">Change Icon</button>
+                    <button class="dropdown-item">Hide</button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <form #editForm="ngForm" (ngSubmit)="onEditSubmit(editForm)" class=" w-100">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <quill-editor   [modules]="config" name="about" [(ngModel)]='about' (ngModelChange)="summaryChange($event)" (onEditorCreated)="setFocus($event)"></quill-editor>
+                    </div>
+                    <br>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Quill Editor without toolbar ends -->
+
+</section>

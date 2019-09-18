@@ -1,0 +1,273 @@
+{
+    "styling":"Styling",
+    "Dashboard": "Dashboard",
+    "Resume Content": "Resume Content",
+    "Dashboard1": "My Dashboard",
+    "Dashboard2": "Editor",
+    "Editor": "Editor",
+ 
+    "User Name": "User Name", 
+
+  
+    "Accounting/Auditin": "Accounting/Auditin",
+    "Administrative": "Administrative",
+    "Advertising": "Advertising",
+    "Art/Creative": "Art/Creative",
+    "Business Development": "Business Development",
+    "Consulting": "Consulting",
+    "Customer Service": "Customer Service",
+    "Engineering": "Engineering",
+    "Health Care": "Health Care",
+    "Human Resources": "Human Resources",
+    "Information Technology": "Information Technology",
+    "Legal": "Legal",
+    "Management": "Management",
+    "Manufacturing": "Manufacturing",
+    "Marketing": "Marketing",
+    "Production": "Production",
+    "Project Management": "Project Management",
+    "PR": "PR",
+    "Sales": "Sales",
+    "Science": "Science",
+    "Writing/Editing": "Writing/Editing",
+    "Other...": "Other...",
+
+"English":"English",
+"Spanish":"Spanish",
+"Portuguese":"Portuguese",
+"German":"German",
+"Arabic":"العربية",
+
+    "Right Direction": "Right Direction",
+    "Left Direction":"Left Direction",
+   
+    "applicable for resumes in all languages":"applicable for resumes in all languages",
+ 
+    "Templates": "Templates",
+    "templates": "Templates",
+    "editor": "Fill Sections",
+    "preview and customize":"Preview & Customize",
+    "arrange sections":"Arrange Sections",
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+   
+    "Upload": "Upload",
+
+  
+   
+ 
+
+ 
+   
+    "calendar": "calendar",
+
+    "Pages": "Pages",
+    "Forgot Password": "Forgot Password",
+    "Horizontal Timeline": "Horizontal Timeline",
+    "Vertical Timeline": "Vertical Timeline",
+    "Login": "Login",
+    "Register": "Register",
+    "User Profile": "User Profile",
+    "Lock Screen": "Lock Screen",
+    "Invoice": "Invoice",
+    "Error": "Error",
+    "Coming Soon": "Coming Soon",
+    "Maintenance": "Maintenance",
+    "Gallery": "Gallery",
+
+    "Documentation": "Documentation",
+    "Support": "Support",
+
+
+
+    "Log in with": "Log in with",
+    "or": "or",
+    "Don't have an account": "Don't have an account",
+    "Registered successfully": "Registered successfully",
+    "Minimum 4 characters": "Minimum 4 characters",
+    "Invalid email address": "Invalid email address",
+    "Sign up": "Sign up",
+    "Sign In": "Sign In",
+
+    "Email": "Email",
+    "Password": "Password",
+
+
+    "Creating a resume has never been": "Creating a resume has never been",
+    "Professional": "Professional",
+    "Resume": "Resume",
+    "Free": "Free",
+    "Resumes": "Resumes",
+    "Multilingual": "Multilingual",
+  
+    "Design": "Design",
+    "Unlimited": "Unlimited",
+    "Entries": "Entries",
+    "PDF Downloads": "PDF Downloads",
+    "Free Account": "Free Account",
+    "First Name": "First Name",
+    "Last Name": "Last Name",
+    "This field is required.": "This field is required.",
+    "Enter atleast 4 characters": "Enter atleast 4 characters",
+    "Start Creating My Resume": "Start Creating My Resume",
+    "Have an account?": "Have an account?",
+    "By using StylingCV you are agreeing to our": "By using StylingCV you are agreeing to our",
+    "Terms of Service": "Terms of Service",
+    "Create": "Create",
+
+
+
+    "Create Cover Letter": "New Cover Letter",
+    "Create Resume": "New Resume",
+    "HI": "HI",
+    "My Document": "My Document",
+    "Name": "Name",
+    "+12 Template": "+12 Template",
+    "Created Date": "Created Date",
+    "Your Job Functionality": "Your Job Functionality",
+    "A well-composed resume can": "A well-composed resume can",
+    "literally change": "literally change",
+    "Resume Name:": "Resume Name:",
+    "Enter Resume Name": "Enter Resume Name",
+    "Lets Start": "Lets Start",
+    "Select text direction (Resume language)": "Select text direction (Resume language)",
+    "You can change the template at any time without having to rewrite the content": "You can change the template at any time without having to rewrite the content",
+    "Experience Level": "Experience Level",
+    "Student / Junior": "Student / Junior",
+    "Senior": "Senior",
+    "Executive": "Executive",
+    "0-2": "0-2",
+    "Years": "Years",
+    "2-6": "2-6 ",
+    "+6": "+6",
+    "template 1": "template 1",
+    "template 2": "template 2",
+    "to your account": "to your account",
+    "2 Free": "2 Free",
+    "Create your FREE account": "Create your Free account",
+    "Sign in with": "Sign in with",
+    "ex: Resume-Marketing": "ex: Resume-Marketing",
+    "Resume language": "Resume language",
+    "Select text direction": "Select text direction",
+    "Easier": "Easier",
+    "Log In": "Log In",
+    "Sign Up": "Sign Up",
+
+
+    "Personal Name": "Personal Name",
+    "Company Name": "Company Name",
+    "Personal Title or Position": "Personal Title or Position",
+    "Contact Information": "Contact Information",
+    "Description": "Description",
+    "Inser Text here..": "Inser Text here..",
+    "Cancel": "Cancel",
+    "Delete": "Delete",
+    "Education": "Education",
+    "Degree and Field of Study": "Degree and Field of Study",
+   
+    "Start Date": "Start Date",
+    "Select Year": "Select Year",
+    "End Date": "End Date",
+    "Select Month": "Select Month",
+    "Dont' Show":"Dont' Show",
+    "City-Country": "City - Country",
+
+    "Achievements and Responsibilitis": "Achievements and Responsibilitis",
+    "Tell us what you did and how you helped the company": "Tell us what you did and how you helped the company",
+    "Position": "Position",
+    "Publications": "Publications",
+    "PortFolio": "PortFolio",
+    "URL": "URL",
+    "Lets start with your header": "Lets start with your header",
+    "Include you First and Last Name and at least one way for employee to reach you": "Include you First and Last Name and at least one way for employee to reach you",
+    "Personal Info": "Personal Info",
+    "Nationality": "Nationality",
+    "Date of Birth": "Date of Birth",
+    "Phone Number": "Phone Number",
+    "Address": "Address",
+    "@username": "@username",
+    "Preview Resume": "Preview Resume",
+    "Next Section": "Next Section",
+ "New password and confirm password are not same.":"New password and confirm password are not same.",
+
+
+
+    
+"Preview & Customize": "Preview & Customize",
+"Arrange Sections": "Arrange Sections",
+"Resume Customizer": "Resume Customizer",
+"Customize & Preview in Real Time":"Customize & Preview in Real Time",
+"Download":"Download",
+"Template Used":"Template Used",
+"Change Template":"Change Template",
+"Resume Color Options":"Resume Color Options",
+"Resume Background":"Resume Background",
+"More Backgrounds":"More Backgrounds",
+"Less Backgrounds":"Less Backgrounds",
+"Resume Layout":"Resume Layout",
+"Two Channels":"Two Channels",
+"One Channel":"One Channel",
+"Font Family":"Font Family",
+"More Fonts":"More Fonts",
+"Less Fonts":"Less Fonts",
+"Font Size":"Font Size",
+"My Resumes":"My Resumes",
+"Premium Account Active":"Premium Account Active",
+"Add new section":"Add new section",
+"Find Job":"Find Job",
+"Upgrade":"Upgrade My Account",
+"Template Lists":"Template Lists", 
+"More designs will be added soon":"More designs will be added soon",
+"You can change the template and colors at any time without having to rewrite the content":"You can change the template and colors at any time without having to rewrite the content",
+"Drag and Drop":"Use <i class='ft-move info p-1'></i> to drag section up and down or left and right",
+"Save":"Save",
+"Year only":"Year only",
+
+
+
+    "Resume Stats": "Resume Stats",
+    "23%- Started": "23%- Started",
+    "14%- In Progress": "14%- In Progress",
+    "35%- Remaining": "35%- Remaining",
+    "28%- Done": "28%- Done",
+    "Featured": "Featured",
+    "Special Title Treatment": "Special Title Treatment",
+    "With Supporting text below as a natural lead-in to additional content": "With Supporting text below as a natural lead-in to additional content",
+    "Go Somewhere": "Go Somewhere",
+    "2 days ago": "2 days ago",
+    "Certification": "Certification",
+    "Award title": "Award title",
+ 
+    "Awards": "Awards",
+    "Authority": "Authority",
+    "Degree and Fiels of Study": "Degree and Fiels of Study",
+    "School Name or University": "School Name or University",
+    "Client Logos": "Client Logos",
+    "Courses": "Courses",
+    "Add New Work History": "Add New Work History",
+    "Let’s start with your header": "Let’s start with your header"
+
+
+
+
+
+
+}

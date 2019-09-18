@@ -1,0 +1,133 @@
+<!-- Sidebar Header starts -->
+
+<div class="sidebar-header">
+        <div class="logo clearfix"> <a [routerLink]="['/']" class="logo-text float-left"> 
+          <span class="text align-middle"> 
+            <!-- {{styling | translate}}  -->
+
+
+            <img  *ngIf="textDir==='ltr'" src="assets/img/logos/editor-logo-en.svg" class="appLogo222" alt="StylingCV Resume Builder">
+            <img  *ngIf="textDir==='rtl'" src="assets/img/logos/editor-logo-ar.svg" class="appLogo222" alt="StylingCV Resume Builder">
+
+
+          </span>
+          <div class="logo-img"> 
+            <!--<img src="assets/img/logo.png" />-->
+            
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300.01px" height="300.01px" viewBox="0 0 300.01 300.01" style="enable-background:new 0 0 300.01 300.01;" xml:space="preserve">
+              <style type="text/css">
+          .st0{fill:#fff;}
+      </style>
+              <path class="st0" d="M272.81,0L27.2,0C12.18,0,0,12.18,0,27.2l0,245.62c0,15.02,12.18,27.2,27.2,27.2l245.62,0
+          c15.02,0,27.2-12.18,27.2-27.2l0-245.62C300.01,12.18,287.83,0,272.81,0z M180.13,192.43l-5.07-6.82c0,0-30.38-42.11-41.46-55.4
+          c-5.76-6.93-14.78-10.82-24.5-10.82c-18.47,0-33.49,15.02-33.49,33.55c0,18.51,15.01,33.54,33.49,33.54
+          c13.14,0,24.4-7.66,29.88-18.68l19.36,25.74c0,0-2.94,4.65-12.25,12c-8.48,6.71-23.19,11.78-36.98,11.78
+          c-35.49,0-64.25-28.82-64.25-64.37c0-35.56,28.76-64.39,64.25-64.39c13.68,0,27.58,2.79,36.72,11.62
+          c3.61,3.48,51.12,67.77,51.12,67.77L180.13,192.43z M209.66,149.15l-16.46-21.41l30.18-45.04h31.78L209.66,149.15z"/>
+            </svg>
+          </div>
+          </a> <a class="nav-toggle d-none d-sm-none d-md-none d-lg-block" id="sidebarToggle" href="javascript:;"> <i class="ft-toggle-right toggle-icon" data-toggle="expanded"></i> </a> <a class="nav-close d-block d-md-block d-lg-none d-xl-none" id="sidebarClose" href="javascript:;"> <i class="ft-x"></i> </a> </div>
+      </div>
+      <!-- Sidebar Header Ends --> 
+      
+      <!-- Sidebar Content starts -->
+      <div class="sidebar-content"  [perfectScrollbar]>  
+        <div class="userleftInfo py-2">
+          <div class="d-flex mb-1 py-1 justify-content-center">
+            <div class="media"><img  class="media-object d-flex round-media"  src="assets/img/portrait/small/avatar-s-24.png" style="width: 80px;height: 80px; margin:0 !important"></div>
+          </div>
+          
+            <div class="nav-container">
+              <ul class="navigation">
+                <li class="has-sub nav-item"> <a> <span class="menu-title d-inline-block text-truncate" style="max-width:95% !important"> 
+                  <!-- {{userdetails.firstName}} {{userdetails.lastName}}... --> 
+                  
+                  {{personalInfo.firstName}} {{personalInfo.lastName}}  ... </span> 
+                </a>
+                  <ul class="menu-content">
+                    <li> <a  routerLink="/dashboard" class="menu-item"> <i class="fa fa-file-alt"></i> {{'My Resumes' | translate}}</a> </li>
+                    <li> <a href="#" class="menu-item">{{'Find Job' | translate}}</a> </li>
+                    <li> <a href="#" class="menu-item">{{'Download' | translate}}</a> </li>
+
+                    <li *ngIf="userdetails.role==='USER'"> <a href="#" class="menu-item"> {{'Upgrade' | translate}} </a> </li>
+                    <li *ngIf="userdetails.role==='OPS'"> <a href="#" class="menu-item">{{'Premium Account Active' | translate}}</a> </li>
+                  </ul>
+                </li>
+              </ul>
+            
+          </div>
+        </div>
+        <div class="nav-container">
+          <ul class="navigation">
+            
+            <!-- First level menu -->
+            <li *ngFor="let menuItem of menuItems" [ngClass]="" [routerLinkActive]="0 != 0 ? '' : 'active'" [routerLinkActiveOptions]="{exact: true}"> 
+              
+              <!-- user info  -->
+              <ng-template #userMenuBlock> 
+                
+                <!-- <a   class="d-flex align-items-center w-100 m-1 p-0">
+                              <img class="media-object d-flex mr-1 float-left img-fluid  align-self-center bg-primary height-50 rounded-circle" src="assets/img/portrait/small/avatar-s-6.png" alt="Name here">
+      
+      
+                              <span class="menu-title valign-middle">{{menuItem.sectionname | translate }}</span>
+      
+                          </a> --> 
+              </ng-template>
+              
+              <!-- //user info --> 
+              
+              <a [routerLink]="menuItem.path" *ngIf="userMenuBlock">
+                 <i [ngClass]="[menuItem.icon]"></i> 
+                <span class="menu-title">{{menuItem.sectionname | translate }}</span> 
+              <!-- <span *ngIf="menuItem.badge != '' " [ngClass]="[menuItem.badgeClass]">{{menuItem.badge}}</span> --> 
+              </a>
+             </li>
+          </ul>
+        </div>
+
+        <ul class="navigation mt-2 addNew">
+            <li class="m-2">
+                <a href="javascript:void(0)" (click)="new_section()" class="btn btn-outline-info ">
+                        <i class="ft-plus"></i>
+                        <span class="menu-title">
+                            {{'Add new section' | translate}} 
+                          </span>
+                      
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="d-block text-center mt-2" *ngIf="resumeMeta?.type != 'CoverLetter'">
+        <a class="btn btn-outline-info mr-1" href="javascript:void(0)" (click)="new_section()">
+            <span>+ Add new section</span>
+        </a>
+        <!-- <button class="btn btn-outline-primary mb-2 mr-2" (click)="openLg(content)">Large modal</button> -->
+    </div>
+
+    
+
+
+
+
+      
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">Modal title</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"> <i class="ft-x font-medium-3"></i> </button>
+        </div>
+        <div class="modal-body">
+          <div *ngFor="let EnglishSectionArray of EnglishSectionArray">
+            <button class="btn btn-outline-primary mr-1 btn-round" (click)="fucntionalityfucntion(EnglishSectionArray) "> {{EnglishSectionArray.name}}</button>
+            <!-- <button class="btn btn-outline-primary mr-1 btn-round" (click)="fucntionalityfucntion() "> {{EnglishSectionArray.name}}</button> --> 
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+        </div>
+      </ng-template>
+      
+      <!-- <button class="btn btn-outline-primary mb-2 mr-2" (click)="openLg(content)">Large modal</button> --> 
+      
+      <!-- Sidebar Content Ends --> 
+      <!-- Sidebar Header starts -->

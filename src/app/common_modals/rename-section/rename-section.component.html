@@ -1,0 +1,71 @@
+
+  <div class="modal-header">
+      <h4 class="modal-title">Change Title & Icon of Section</h4>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <i class="ft-x font-medium-3"></i>
+      </button>
+  </div>
+  <div class="modal-body">
+
+
+
+
+        <div  class="form-body">
+                 <div  class="row">
+                  <div  class="col-md-12">
+                 
+                      <label  for="secName">Section Title</label>
+                 
+
+
+                     <div class="input-group">
+                       <div class="input-group-prepend">
+                         <span class="input-group-text" id="basic-addon3">
+                           <i class="{{sectionicon}}"></i></span>
+                          </div>
+                          <input aria-describedby="basic-addon3" class="form-control form-control-lg" id="secName" name="secName" [(ngModel)]="sectionname" (ngModelChange)="sectionrename(id,sectionUniqueId,resumeIdArray)" placeholder="name">
+                    </div>
+                  </div>
+                  
+                </div>
+                
+                 <div  class="ol-md-12">
+                 
+                    <label  for="secName">Section Icon</label>
+                  <div style="height:300px; overflow: auto; padding: 10px">
+                 
+                         <div class="d-flex flex-wrap justify-content-center"> 
+                            <div class="iconSet" *ngFor="let iconsArray of iconsArray"  (click)="iconschangeFunction(id,iconsArray,sectionArray,resumeIdArray)">
+                              <div class="border border-gray m-1 p-1 btn text-center  bg-grey bg-lighten-3 font-medium-4">
+                                <i [ngClass]="[iconsArray]" style="font-size:25px"></i>
+                              </div>
+                            </div>
+                        </div>
+                  </div>
+
+
+
+                </div>
+                 
+               
+                
+              </div>
+
+              
+
+
+       
+
+    
+
+      <!-- <a class="btn  mr-1 btn-raised  btn-info" (click)="savesection(icon,sectionname,id,sectionArray,resumeIdArray)"> <i class="fa fa-add-to-list mr-1"></i> Save
+          </a> -->
+  </div>
+  <div class="modal-footer">
+   
+        
+        <a class="btn  mr-1 btn-raised  btn-info" (click)="savesection(sectionicon,sectionname,id,sectionArray,resumeIdArray)"> 
+            Save
+         </a>
+         <button type="button" class="btn btn-outline-grey grey" (click)="activeModal.close('Close click')">Close</button>
+  </div>

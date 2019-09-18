@@ -1,0 +1,15 @@
+<div class="wrapper" [dir]="textDir" >
+        <!-- <div class="wrapper" [dir]="options.direction" > -->
+   <app-navbar (languageChanged)="languageChangedHandler($event)" ></app-navbar>
+    <div class="main-panel">
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- </div> -->
+     
+        
+        <app-footer class="noMargin mt-5 d-block"></app-footer>
+    </div>
+    <!-- <app-notification-sidebar></app-notification-sidebar> -->
+    <!-- <app-customizer (directionEvent)="getOptions($event)"></app-customizer> -->
+</div>  

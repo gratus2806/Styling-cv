@@ -1,0 +1,47 @@
+
+<div class="wrapper" [dir]="textDir">
+        <!-- <div class="wrapper" [dir]="options.direction"  > -->
+    <div class="app-sidebar" data-active-color="yellow" data-background-color="purple-bliss">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background"></div>
+    </div>
+    <!-- <app-navbar></app-navbar> -->
+    <app-editor-navbar (languageChanged)="languageChangedHandler($event)"></app-editor-navbar>
+    <div class="main-panel"> 
+        <div class="main-content">
+            <div class="content-wrapper">
+                <div class="container-fluid">
+
+
+
+
+
+                    <div class="row mt-2">
+                        <div class="col-12 col-lg-8 col-md-8 offset-md-2 offset-lg-2">
+                            <router-outlet></router-outlet>
+
+
+                            <div class="row my-4">
+                                <div class="form-actions col-12 text-right">  
+                                    <button type="button" class="btn btn-raised btn-warning mr-1"> <i class="fa fa-file-eye"></i> Preview Resume </button>
+                                    <button type="button" class="btn btn-raised btn-primary tab-{{currentTab}}" (click)="nextSection()"> Next Section <i class="fa ft-arrow-right"></i> </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-4 col-md-4 d-none">
+                            <!-- <app-editor-sidebar></app-editor-sidebar> -->
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <app-footer></app-footer>
+    </div>
+    <!-- <app-notification-sidebar></app-notification-sidebar> -->
+    <app-customizer (directionEvent)="getOptions($event)"></app-customizer>
+</div>

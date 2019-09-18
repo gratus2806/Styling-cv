@@ -1,0 +1,784 @@
+<!--User Profile Starts-->
+<!--Basic User Details Starts-->
+<section id="user-profile">
+        <div class="row">
+            <div class="col-12">
+                <div class="card profile-with-cover">
+                    <div class="card-img-top img-fluid bg-cover height-300" style="background: url('assets/img/photos/14.jpg') 50%;"></div>
+                    <div class="media profil-cover-details row">
+                        <div class="col-5">
+                            <div class="align-self-start halfway-fab pl-3 pt-2">
+                                <div class="text-left">
+                                        <!-- <h3 class="card-title white">Yasser AL Khateeb</h3> -->
+                                    <h3 class="card-title white">{{userdetails.firstName}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="align-self-center halfway-fab text-center">
+                                <a class="profile-image">
+                                    <img src="assets/img/portrait/avatars/avatar-08.png" class="rounded-circle img-border gradient-summer width-100" alt="Card image">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-5">                        
+                        </div>                    
+                    </div>
+                    <div class="profile-cover-buttons">
+                        <div class="media-body halfway-fab align-self-end">
+                            <div class="text-right d-none d-sm-none d-md-none d-lg-block">
+                                <button type="button" class="btn btn-green btn-raised mr-2"><i class="ft-edit mr-2"></i> My Dashboard</button>
+                                <button type="button" class="btn btn-danger btn-raised mr-3"><i class="ft-power mr-2"></i> Logout</button>
+                            </div>
+                             
+                        </div>
+                    </div>
+                    <div class="profile-section">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 ">
+                                <ul class="profile-menu no-list-style">
+                                    <li>
+                                        <a (click)="showPage('account')" [ngClass]="currentPage === 'account' ? 'primary font-medium-2 font-weight-600 active' : 'primary font-medium-2 font-weight-600'">My Account</a>
+                                    </li>
+                                    <li   *ngIf="userdetails.role==='OPS'">
+                                            <a (click)="showPage('myPlan')" [ngClass]="currentPage === 'myPlan' ? 'primary font-medium-2 font-weight-600 active' : 'primary font-medium-2 font-weight-600'">Invoice</a>
+                                     </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4 col-md-4 text-center pb-3">
+
+                                <span class="font-medium-2 text-uppercase">{{userdetails.firstName}} {{userdetails.lastName}}</span>
+                                <p class="grey font-small-2">
+                                        <span *ngIf="userdetails.role==='USER'">Basic Account</span> 
+                                        <span *ngIf="userdetails.role==='OPS'">Premium Account</span> 
+                                </p>
+
+                                <div class="row">
+                                    <div class="col-6 border-right text-right">
+                                        <strong class="primary">Account Type</strong> <br>
+                                        <span class="d-none">{{userdetails.role}}</span>
+                                        
+                                      <span *ngIf="userdetails.role==='USER'">Basic</span> 
+                                         <span *ngIf="userdetails.role==='OPS'">Premium</span> 
+                                      
+                                    </div>
+                                    <div class="col-6  text-left ">
+                                            <strong class="primary">Valide Until</strong> <br>
+                                            <span class="d-none">{{userdetails.expiryDate}}</span>
+                                            
+                                            <span *ngIf="userdetails.role==='USER'">Unlimited</span> 
+                                            <span *ngIf="userdetails.role==='OPS'">
+                                                <span>{{userdetails.expiryDate  | date : format : timezone}}</span>
+                                            </span>
+                                            
+                                    </div>
+                                </div>
+                                <a  class="btn btn-primary btn-raised mt-2 mr-2"  routerLink="/pricing">
+                                    <i class="icon-rocket mr-1"></i> Upgrade Now</a>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <ul class="profile-menu no-list-style">
+                                    <li>
+                                        <a (click)="showPage('settings')" [ngClass]="currentPage === 'settings' ? 'primary font-medium-2 font-weight-600 active' : 'primary font-medium-2 font-weight-600'">Settings</a>
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Basic User Details Ends--> 
+    
+    <!--About section starts-->
+    <section id="account" *ngIf="currentPage === 'account'">
+ 
+        <div class="row text-left justify-content-md-center">
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title" id="basic-layout-card-center">Account</h4>
+                            <p class="mb-0">This example shows a ways to center your card with form. Here we have used <code>.justify-content-md-center .row</code> classes to center the card as its not full width. User can always change column classes according to his requirements. This example also uses form action buttons in the center bottom position of the card.</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="px-3">
+                                <form class="form">
+                                    <div class="form-body">
+        
+                                        <div class="form-group">
+                                            <label for="eventRegInput1">First Name</label>
+                                            <input type="text" value="{{userdetails.firstName}}" id="eventRegInput1" class="form-control"  name="fullname">
+                                        </div>
+        
+                                        <div class="form-group">
+                                            <label for="eventRegInput2">Last Name</label>
+                                            <input type="text"  value="{{userdetails.lastName}}" id="eventRegInput2" class="form-control"  name="title">
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="eventRegInput3">Job Title </label>
+                                                <input type="text" id="eventRegInput3"  class="form-control"  name="company">
+                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="eventRegInput3">Email Address </label>
+                                            <input type="text" id="eventRegInput3" readonly value="{{userdetails.email}}" class="form-control"  name="company">
+                                        </div>
+        
+                                        <div class="form-group">
+                                            <label for="eventRegInput4">Email</label>
+                                            <input type="email" id="eventRegInput4" class="form-control"  name="email">
+                                        </div>
+        
+                                        <div class="form-group">
+                                            <label for="eventRegInput5">Contact Number</label>
+                                            <input type="tel" id="eventRegInput5" class="form-control" name="contact" >
+                                        </div>
+        
+                                        <div class="form-group">
+                                                <label for="eventRegInput5">Country</label>
+                                            
+
+                                                <select class="form-control" id="county" name="county">
+                                                        <option value=""></option>
+                                                        <option selected="" class="ng-binding" value="Country">Country</option>
+                                                        <option value="Afganistan">Afghanistan</option>
+                                                        <option value="Albania">Albania</option>
+                                                        <option value="Algeria">Algeria</option>
+                                                        <option value="American Samoa">American Samoa</option>
+                                                        <option value="Andorra">Andorra</option>
+                                                        <option value="Angola">Angola</option>
+                                                        <option value="Anguilla">Anguilla</option>
+                                                        <option value="Antigua &amp; Barbuda">Antigua &amp; Barbuda</option>
+                                                        <option value="Argentina">Argentina</option>
+                                                        <option value="Armenia">Armenia</option>
+                                                        <option value="Aruba">Aruba</option>
+                                                        <option value="Australia">Australia</option>
+                                                        <option value="Austria">Austria</option>
+                                                        <option value="Azerbaijan">Azerbaijan</option>
+                                                        <option value="Bahamas">Bahamas</option>
+                                                        <option value="Bahrain">Bahrain</option>
+                                                        <option value="Bangladesh">Bangladesh</option>
+                                                        <option value="Barbados">Barbados</option>
+                                                        <option value="Belarus">Belarus</option>
+                                                        <option value="Belgium">Belgium</option>
+                                                        <option value="Belize">Belize</option>
+                                                        <option value="Benin">Benin</option>
+                                                        <option value="Bermuda">Bermuda</option>
+                                                        <option value="Bhutan">Bhutan</option>
+                                                        <option value="Bolivia">Bolivia</option>
+                                                        <option value="Bonaire">Bonaire</option>
+                                                        <option value="Bosnia &amp; Herzegovina">Bosnia &amp; Herzegovina</option>
+                                                        <option value="Botswana">Botswana</option>
+                                                        <option value="Brazil">Brazil</option>
+                                                        <option value="British Indian Ocean Ter">British Indian Ocean Ter</option>
+                                                        <option value="Brunei">Brunei</option>
+                                                        <option value="Bulgaria">Bulgaria</option>
+                                                        <option value="Burkina Faso">Burkina Faso</option>
+                                                        <option value="Burundi">Burundi</option>
+                                                        <option value="Cambodia">Cambodia</option>
+                                                        <option value="Cameroon">Cameroon</option>
+                                                        <option value="Canada">Canada</option>
+                                                        <option value="Canary Islands">Canary Islands</option>
+                                                        <option value="Cape Verde">Cape Verde</option>
+                                                        <option value="Cayman Islands">Cayman Islands</option>
+                                                        <option value="Central African Republic">Central African Republic</option>
+                                                        <option value="Chad">Chad</option>
+                                                        <option value="Channel Islands">Channel Islands</option>
+                                                        <option value="Chile">Chile</option>
+                                                        <option value="China">China</option>
+                                                        <option value="Christmas Island">Christmas Island</option>
+                                                        <option value="Cocos Island">Cocos Island</option>
+                                                        <option value="Colombia">Colombia</option>
+                                                        <option value="Comoros">Comoros</option>
+                                                        <option value="Congo">Congo</option>
+                                                        <option value="Cook Islands">Cook Islands</option>
+                                                        <option value="Costa Rica">Costa Rica</option>
+                                                        <option value="Cote DIvoire">Cote D'Ivoire</option>
+                                                        <option value="Croatia">Croatia</option>
+                                                        <option value="Cuba">Cuba</option>
+                                                        <option value="Curaco">Curacao</option>
+                                                        <option value="Cyprus">Cyprus</option>
+                                                        <option value="Czech Republic">Czech Republic</option>
+                                                        <option value="Denmark">Denmark</option>
+                                                        <option value="Djibouti">Djibouti</option>
+                                                        <option value="Dominica">Dominica</option>
+                                                        <option value="Dominican Republic">Dominican Republic</option>
+                                                        <option value="East Timor">East Timor</option>
+                                                        <option value="Ecuador">Ecuador</option>
+                                                        <option value="Egypt">Egypt</option>
+                                                        <option value="El Salvador">El Salvador</option>
+                                                        <option value="Equatorial Guinea">Equatorial Guinea</option>
+                                                        <option value="Eritrea">Eritrea</option>
+                                                        <option value="Estonia">Estonia</option>
+                                                        <option value="Ethiopia">Ethiopia</option>
+                                                        <option value="Falkland Islands">Falkland Islands</option>
+                                                        <option value="Faroe Islands">Faroe Islands</option>
+                                                        <option value="Fiji">Fiji</option>
+                                                        <option value="Finland">Finland</option>
+                                                        <option value="France">France</option>
+                                                        <option value="French Guiana">French Guiana</option>
+                                                        <option value="French Polynesia">French Polynesia</option>
+                                                        <option value="French Southern Ter">French Southern Ter</option>
+                                                        <option value="Gabon">Gabon</option>
+                                                        <option value="Gambia">Gambia</option>
+                                                        <option value="Georgia">Georgia</option>
+                                                        <option value="Germany">Germany</option>
+                                                        <option value="Ghana">Ghana</option>
+                                                        <option value="Gibraltar">Gibraltar</option>
+                                                        <option value="Great Britain">Great Britain</option>
+                                                        <option value="Greece">Greece</option>
+                                                        <option value="Greenland">Greenland</option>
+                                                        <option value="Grenada">Grenada</option>
+                                                        <option value="Guadeloupe">Guadeloupe</option>
+                                                        <option value="Guam">Guam</option>
+                                                        <option value="Guatemala">Guatemala</option>
+                                                        <option value="Guinea">Guinea</option>
+                                                        <option value="Guyana">Guyana</option>
+                                                        <option value="Haiti">Haiti</option>
+                                                        <option value="Hawaii">Hawaii</option>
+                                                        <option value="Honduras">Honduras</option>
+                                                        <option value="Hong Kong">Hong Kong</option>
+                                                        <option value="Hungary">Hungary</option>
+                                                        <option value="Iceland">Iceland</option>
+                                                        <option value="India">India</option>
+                                                        <option value="Indonesia">Indonesia</option>
+                                                        <option value="Iran">Iran</option>
+                                                        <option value="Iraq">Iraq</option>
+                                                        <option value="Ireland">Ireland</option>
+                                                        <option value="Isle of Man">Isle of Man</option>
+                                                        <option value="Israel">Israel</option>
+                                                        <option value="Italy">Italy</option>
+                                                        <option value="Jamaica">Jamaica</option>
+                                                        <option value="Japan">Japan</option>
+                                                        <option value="Jordan">Jordan</option>
+                                                        <option value="Kazakhstan">Kazakhstan</option>
+                                                        <option value="Kenya">Kenya</option>
+                                                        <option value="Kiribati">Kiribati</option>
+                                                        <option value="Korea North">Korea North</option>
+                                                        <option value="Korea Sout">Korea South</option>
+                                                        <option value="Kuwait">Kuwait</option>
+                                                        <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                                        <option value="Laos">Laos</option>
+                                                        <option value="Latvia">Latvia</option>
+                                                        <option value="Lebanon">Lebanon</option>
+                                                        <option value="Lesotho">Lesotho</option>
+                                                        <option value="Liberia">Liberia</option>
+                                                        <option value="Libya">Libya</option>
+                                                        <option value="Liechtenstein">Liechtenstein</option>
+                                                        <option value="Lithuania">Lithuania</option>
+                                                        <option value="Luxembourg">Luxembourg</option>
+                                                        <option value="Macau">Macau</option>
+                                                        <option value="Macedonia">Macedonia</option>
+                                                        <option value="Madagascar">Madagascar</option>
+                                                        <option value="Malaysia">Malaysia</option>
+                                                        <option value="Malawi">Malawi</option>
+                                                        <option value="Maldives">Maldives</option>
+                                                        <option value="Mali">Mali</option>
+                                                        <option value="Malta">Malta</option>
+                                                        <option value="Marshall Islands">Marshall Islands</option>
+                                                        <option value="Martinique">Martinique</option>
+                                                        <option value="Mauritania">Mauritania</option>
+                                                        <option value="Mauritius">Mauritius</option>
+                                                        <option value="Mayotte">Mayotte</option>
+                                                        <option value="Mexico">Mexico</option>
+                                                        <option value="Midway Islands">Midway Islands</option>
+                                                        <option value="Moldova">Moldova</option>
+                                                        <option value="Monaco">Monaco</option>
+                                                        <option value="Mongolia">Mongolia</option>
+                                                        <option value="Montserrat">Montserrat</option>
+                                                        <option value="Morocco">Morocco</option>
+                                                        <option value="Mozambique">Mozambique</option>
+                                                        <option value="Myanmar">Myanmar</option>
+                                                        <option value="Nambia">Nambia</option>
+                                                        <option value="Nauru">Nauru</option>
+                                                        <option value="Nepal">Nepal</option>
+                                                        <option value="Netherland Antilles">Netherland Antilles</option>
+                                                        <option value="Netherlands">Netherlands (Holland, Europe)</option>
+                                                        <option value="Nevis">Nevis</option>
+                                                        <option value="New Caledonia">New Caledonia</option>
+                                                        <option value="New Zealand">New Zealand</option>
+                                                        <option value="Nicaragua">Nicaragua</option>
+                                                        <option value="Niger">Niger</option>
+                                                        <option value="Nigeria">Nigeria</option>
+                                                        <option value="Niue">Niue</option>
+                                                        <option value="Norfolk Island">Norfolk Island</option>
+                                                        <option value="Norway">Norway</option>
+                                                        <option value="Oman">Oman</option>
+                                                        <option value="Pakistan">Pakistan</option>
+                                                        <option value="Palau Island">Palau Island</option>
+                                                        <option value="Palestine">Palestine</option>
+                                                        <option value="Panama">Panama</option>
+                                                        <option value="Papua New Guinea">Papua New Guinea</option>
+                                                        <option value="Paraguay">Paraguay</option>
+                                                        <option value="Peru">Peru</option>
+                                                        <option value="Phillipines">Philippines</option>
+                                                        <option value="Pitcairn Island">Pitcairn Island</option>
+                                                        <option value="Poland">Poland</option>
+                                                        <option value="Portugal">Portugal</option>
+                                                        <option value="Puerto Rico">Puerto Rico</option>
+                                                        <option value="Qatar">Qatar</option>
+                                                        <option value="Republic of Montenegro">Republic of Montenegro</option>
+                                                        <option value="Republic of Serbia">Republic of Serbia</option>
+                                                        <option value="Reunion">Reunion</option>
+                                                        <option value="Romania">Romania</option>
+                                                        <option value="Russia">Russia</option>
+                                                        <option value="Rwanda">Rwanda</option>
+                                                        <option value="St Barthelemy">St Barthelemy</option>
+                                                        <option value="St Eustatius">St Eustatius</option>
+                                                        <option value="St Helena">St Helena</option>
+                                                        <option value="St Kitts-Nevis">St Kitts-Nevis</option>
+                                                        <option value="St Lucia">St Lucia</option>
+                                                        <option value="St Maarten">St Maarten</option>
+                                                        <option value="St Pierre &amp; Miquelon">St Pierre &amp; Miquelon</option>
+                                                        <option value="St Vincent &amp; Grenadines">St Vincent &amp; Grenadines</option>
+                                                        <option value="Saipan">Saipan</option>
+                                                        <option value="Samoa">Samoa</option>
+                                                        <option value="Samoa American">Samoa American</option>
+                                                        <option value="San Marino">San Marino</option>
+                                                        <option value="Sao Tome &amp; Principe">Sao Tome &amp; Principe</option>
+                                                        <option value="Saudi Arabia">Saudi Arabia</option>
+                                                        <option value="Senegal">Senegal</option>
+                                                        <option value="Serbia">Serbia</option>
+                                                        <option value="Seychelles">Seychelles</option>
+                                                        <option value="Sierra Leone">Sierra Leone</option>
+                                                        <option value="Singapore">Singapore</option>
+                                                        <option value="Slovakia">Slovakia</option>
+                                                        <option value="Slovenia">Slovenia</option>
+                                                        <option value="Solomon Islands">Solomon Islands</option>
+                                                        <option value="Somalia">Somalia</option>
+                                                        <option value="South Africa">South Africa</option>
+                                                        <option value="Spain">Spain</option>
+                                                        <option value="Sri Lanka">Sri Lanka</option>
+                                                        <option value="Sudan">Sudan</option>
+                                                        <option value="Suriname">Suriname</option>
+                                                        <option value="Swaziland">Swaziland</option>
+                                                        <option value="Sweden">Sweden</option>
+                                                        <option value="Switzerland">Switzerland</option>
+                                                        <option value="Syria">Syria</option>
+                                                        <option value="Tahiti">Tahiti</option>
+                                                        <option value="Taiwan">Taiwan</option>
+                                                        <option value="Tajikistan">Tajikistan</option>
+                                                        <option value="Tanzania">Tanzania</option>
+                                                        <option value="Thailand">Thailand</option>
+                                                        <option value="Togo">Togo</option>
+                                                        <option value="Tokelau">Tokelau</option>
+                                                        <option value="Tonga">Tonga</option>
+                                                        <option value="Trinidad &amp; Tobago">Trinidad &amp; Tobago</option>
+                                                        <option value="Tunisia">Tunisia</option>
+                                                        <option value="Turkey">Turkey</option>
+                                                        <option value="Turkmenistan">Turkmenistan</option>
+                                                        <option value="Turks &amp; Caicos Is">Turks &amp; Caicos Is</option>
+                                                        <option value="Tuvalu">Tuvalu</option>
+                                                        <option value="Uganda">Uganda</option>
+                                                        <option value="Ukraine">Ukraine</option>
+                                                        <option value="United Arab Erimates">United Arab Emirates</option>
+                                                        <option value="United Kingdom">United Kingdom</option>
+                                                        <option value="United States of America">United States of America</option>
+                                                        <option value="Uraguay">Uruguay</option>
+                                                        <option value="Uzbekistan">Uzbekistan</option>
+                                                        <option value="Vanuatu">Vanuatu</option>
+                                                        <option value="Vatican City State">Vatican City State</option>
+                                                        <option value="Venezuela">Venezuela</option>
+                                                        <option value="Vietnam">Vietnam</option>
+                                                        <option value="Virgin Islands (Brit)">Virgin Islands (Brit)</option>
+                                                        <option value="Virgin Islands (USA)">Virgin Islands (USA)</option>
+                                                        <option value="Wake Island">Wake Island</option>
+                                                        <option value="Wallis &amp; Futana Is">Wallis &amp; Futana Is</option>
+                                                        <option value="Yemen">Yemen</option>
+                                                        <option value="Zaire">Zaire</option>
+                                                        <option value="Zambia">Zambia</option>
+                                                        <option value="Zimbabwe">Zimbabwe</option>
+                                                      </select>
+                                            </div>
+                                            <div class="form-group">
+                                                    <label for="city">City</label>
+                                                    <input type="text" id="city" class="form-control" name="city" >
+                                             </div>
+                                    </div>
+        
+                                    <div class="form-actions center">
+                                        <button type="button" class="btn btn-raised btn-warning mr-1">
+                                            <i class="ft-x"></i> Cancel
+                                        </button>
+                                        <button type="button" class="btn btn-raised btn-primary">
+                                            <i class="fa fa-check-square-o"></i> Save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                  
+                </div>
+
+                <div class="col-md-5">
+                        <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title" id="basic-layout-card-center">My Plan</h4>
+                                    <!-- <p class="mb-0">This example shows a ways to center your card with form. Here we have used <code>.justify-content-md-center .row</code> classes to center the card as its not full width. User can always change column classes according to his requirements. This example also uses form action buttons in the center bottom position of the card.</p> -->
+                                </div>
+                                <div class="card-body">
+                                     
+                                                <div class="px-3">
+                                            
+                                              
+                                                    
+                                                  <h5 *ngIf="userdetails.role==='USER'">No active plan</h5> 
+                                                     <h5 *ngIf="userdetails.role==='OPS'">Premium Account</h5> 
+                                                  
+                                               
+                                                       <p>
+                                                     <strong class="primary">Valide Until</strong>: 
+                                                        <span *ngIf="userdetails.role==='USER'">Unlimited</span> 
+                                                        <span *ngIf="userdetails.role==='OPS'">
+                                                            <span>{{userdetails.expiryDate  | date : format : timezone}}</span>
+                                                        </span>
+                                                    </p>
+                                                        <p *ngIf="userdetails.role==='USER'">
+                                                                Start downloading your documents, and win more jobs.<a routerLink="/pricing"> Choose your plan!</a>
+                                                            </p> 
+                                                </div>
+                                             
+
+                  
+                                    
+                                </div>
+                                <div class="card-footer text-right">
+                                        <a *ngIf="userdetails.role==='USER'" class="btn btn-primary btn-raised mt-2 mr-2" href="/pricing">
+                                            <i class="icon-rocket mr-1"></i>Upgrade Now</a>
+
+                                            <a  *ngIf="userdetails.role==='OPS'"  (click)="showPage('myPlan')" class="btn btn-primary btn-raised mt-2 mr-2" routerlink="/pricing" >
+                                                <i class="icon-rocket mr-1"></i>My Plan</a>
+                                    </div>
+                            </div>
+
+
+                            <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title" id="basic-layout-card-center">Legal information</h4>
+                                        <!-- <p class="mb-0">This example shows a ways to center your card with form. Here we have used <code>.justify-content-md-center .row</code> classes to center the card as its not full width. User can always change column classes according to his requirements. This example also uses form action buttons in the center bottom position of the card.</p> -->
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="px-3">
+        
+                                            <strong>Terms of Use</strong> valid from 01/01/2019 is available 
+                                                <a href="https://stylingcv.com/en/terms" target="_blank">here</a>
+                                                <br/>
+                                                <strong>Privacy Policy</strong> valid from 05/11/2019 is available  <a href="https://stylingcv.com/privacy-policy/"  target="_blank">here</a>
+                                        </div>
+                                        <div class="form-group px-3 py-2">
+                                            
+                                                <div class="input-group">
+                                                    
+                                                    <div class="custom-control custom-radio display-inline-block float-left">
+                                                        <input type="radio" id="acceptTerms" checked name="acceptTerms" class="custom-control-input">
+                                                        <label class="custom-control-label" for="acceptTerms">
+                                                                I have read Terms of Use and Privacy Policy  and I accept their provisions
+                
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                    </div>
+            </div>
+    </section>
+    <!--About section ends-->
+    
+  
+    <!--User's Plan section starts-->
+    <section id="myPlan" *ngIf="currentPage === 'myPlan'" class="invoice-template">
+     
+       <!--Invoice template starts-->
+ 
+     
+        <div class="card">
+            <div class="card-body p-3">
+                <div id="invoice-template" class="card-block">
+                    <!-- Invoice Company Details -->
+                    <div id="invoice-company-details" class="row">
+                        <div class="col-6 text-left">
+                            <img src="assets/img/logos/logo-big-black.png" alt="company logo" class="mb-2" width="70">
+                            <ul class="px-0 list-unstyled">
+                                <li class="text-bold-800">StylingCV LLC.</li>
+                                <li>www.StylingCV.com</li>
+                                <li>New Cast, Delware</li>
+                                <li>USA</li>
+                            </ul>
+                        </div>
+                        <div class="col-6 text-right">
+                            <h2>INVOICE</h2>
+                            <p class="pb-3"># INV- {{userdetails._id}}</p>
+                           
+                        </div>
+                    </div>
+                    <!--/ Invoice Company Details -->
+                    <!-- Invoice Customer Details -->
+                    <div id="invoice-customer-details" class="row pt-2">
+                        <div class="col-sm-12 text-left">
+                            <p class="text-muted">Bill To</p>
+                        </div>
+                        <div class="col-6 text-left">
+                            <ul class="px-0 list-unstyled">
+                                <li class="text-bold-800">{{userdetails.firstName}} {{userdetails.lastName}}</li>
+                                <li>{{userdetails.preiumCounry}}, {{userdetails.preiumCity}} </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="col-6 text-right">
+                            <p><span class="text-muted">Invoice Date :</span> {{userdetails.expiryDate  | date : format : timezone}}</p>
+                            <p><span class="text-muted">Terms :</span> Every {{userdetails.preiumMonths}} <span  *ngIf="userdetails.preiumMonths===1">month</span>  <span  *ngIf="userdetails.preiumMonths===12">months</span> <span  *ngIf="userdetails.preiumMonths===3">months</span></p>
+                            <p><span class="text-muted">Due Date :</span> {{userdetails.expiryDate  | date : format : timezone}}</p>
+                        </div>
+                    </div>
+                    <!--/ Invoice Customer Details -->
+                    <!-- Invoice Items Details -->
+                    <div id="invoice-items-details" class="pt-2">
+                        <div class="row">
+                            <div class="table-responsive col-sm-12">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                             
+                                            <th>Item &amp; Description</th>
+                                            <th class="text-right">Months</th>
+                                         
+                                            <th class="text-right">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            
+                                            <td>
+                                                <p>Premium Account - {{userdetails.preiumMonths}} <span  *ngIf="userdetails.preiumMonths===1">month</span>  <span  *ngIf="userdetails.preiumMonths===12">months</span> <span  *ngIf="userdetails.preiumMonths===3">months</span> </p>
+                                                <p class="text-muted">Unlock the power of StylingCV</p>
+                                            </td>
+                                            <td class="text-right">{{userdetails.preiumMonths}} <span  *ngIf="userdetails.preiumMonths===1">month</span>  <span  *ngIf="userdetails.preiumMonths===12">months</span> <span  *ngIf="userdetails.preiumMonths===3">months</span></td>
+                                          
+                                            <td class="text-right">$ <span  *ngIf="userdetails.preiumMonths===1">17.99</span>  <span  *ngIf="userdetails.preiumMonths===12">59.88</span> <span  *ngIf="userdetails.preiumMonths===3">29.97</span></td>
+                                        </tr>
+                                      
+                                      
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 text-left">
+                                <p class="lead">Payment Methods:</p>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <table class="table table-borderless table-sm">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Paid by:</td>
+                                                    <td class="text-right">Credit Card or PayPal</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Auto renewal</td>
+                                                    <td class="text-right">
+                                                        <a class="primary-text"  (click)="showPage('settings')">active!</a>
+                                                    </td>
+                                                </tr>
+                                                
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <p class="lead">Total due</p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>Sub Total</td>
+                                                <td class="text-right">$ <span  *ngIf="userdetails.preiumMonths===1">17.99</span>  <span  *ngIf="userdetails.preiumMonths===12">59.88</span> <span  *ngIf="userdetails.preiumMonths===3">29.97</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>TAX (0%)</td>
+                                                <td class="text-right">$ 0.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-bold-800">Total</td>
+                                                <td class="text-bold-800 text-right"> $ $ <span  *ngIf="userdetails.preiumMonths===1">17.99</span>  <span  *ngIf="userdetails.preiumMonths===12">59.88</span> <span  *ngIf="userdetails.preiumMonths===3">29.97</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Payment Made</td>
+                                                <td class="green text-right">(-) $ $ <span  *ngIf="userdetails.preiumMonths===1">17.99</span>  <span  *ngIf="userdetails.preiumMonths===12">59.88</span> <span  *ngIf="userdetails.preiumMonths===3">29.97</span></td>
+                                            </tr>
+                                            <tr class="bg-grey bg-lighten-4">
+                                                <td class="text-bold-800">Balance Due</td>
+                                                <td class="text-bold-800 text-right">$ 0.00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="text-center">
+                                    <p>Authorized person</p>
+                                    <img src="assets/img/pages/signature-scan.png" alt="signature" class="width-200">
+                                    <h6>Adam Orton</h6>
+                                    <p class="text-muted">Managing Director</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    
+                </div>
+            </div>
+        </div>
+    
+    <!--Invoice template ends-->
+    </section>
+    <!--User's plan section starts-->
+    
+    <!--User's settings photos section starts-->
+    <section id="settings" *ngIf="currentPage === 'settings'">
+     
+        <div class="row text-left justify-content-md-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Change Password</h5>   
+                    </div>
+                    <div class="card-body">
+                        <div class="card-block">
+                        
+                                <div class="px-3">
+                                        <form class="form" (ngSubmit)="f.valid && onSubmit(f)" #f="ngForm">
+                                            <input type="hidden" #id="ngModel" [(ngModel)]="user.id" id="id" class="form-control" name="id" >
+                                            <input type="hidden" #email="ngModel" [(ngModel)]="user.email" id="email" class="form-control" name="email" >
+                                            <div class="form-body">
+                                                <div class="form-group">
+                                                    <label for="oldPass">Old Password</label>
+                                                    <input type="text" #oldPass="ngModel" [(ngModel)]="user.oldPass" id="oldPass" class="form-control" name="oldPass" [ngClass]="{'invalid-textbox' :f.submitted && !oldPass.valid }">
+                                                </div>
+                
+                                                <div class="form-group">
+                                                    <label for="newPass">New Password</label>
+                                                    <input type="text" #newPass="ngModel" [(ngModel)]="user.newPass" id="eventRegInput2" class="form-control" name="newPass" [ngClass]="{'invalid-textbox' :f.submitted && !newPass.valid }">
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="repeatPas">Repeat New Password</label>
+                                                        <input type="text" #repeatPass="ngModel" [(ngModel)]="user.repeatPass" id="repeatPass"  class="form-control" name="repeatPass" [ngClass]="{'invalid-textbox' :f.submitted && !repeatPass.valid }">
+                                                 </div> 
+                                                                            <!-- Success message -->
+                                            <div class="alert alert-secondary" type="success" role="alert" *ngIf="successMessages">
+                                                {{successMessages | translate}}
+                                            </div>
+
+                                            <div class="alert" role="alert" class="alert alert-warning" *ngIf="errorMessages">
+                                                {{errorMessages | translate}}
+                                            </div>
+                                              
+                                            </div>
+                
+                                            <div class="form-actions right">
+                                              
+                                                <button type="submit" class="btn btn-raised btn-primary" [disabled]="!f.valid">
+                                                    Change
+                                                </button>
+                                            </div>
+                 
+                                        </form>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row text-left justify-content-md-center"  *ngIf="userdetails.role==='OPS'">
+                <div class="col-md-6">
+               
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Account Settings</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-block">
+                            
+                                    <div class="px-3">
+                                            <form class="form">
+                                                <div class="form-body">
+                    
+                                                    
+                    
+                                                   
+                                                        <div class="form-group col-12 mb-2">
+                                                                <label>Autorenewal </label>
+                                                                <div class="input-group">
+                                                                    <div class="custom-control custom-radio display-inline-block">
+                                                                        <input type="radio" id="customRadioInline1" checked name="customRadioInline1" class="custom-control-input">
+                                                                        <label class="custom-control-label" for="customRadioInline1">Yes</label>
+                                                                    </div>
+                                                                    <div class="custom-control custom-radio display-inline-block">
+                                                                        <input type="radio" id="customRadioInline2"  name="customRadioInline1" class="custom-control-input">
+                                                                        <label class="custom-control-label" for="customRadioInline2">No</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+            
+                                                    
+                    
+                                
+                                                     
+                    
+                                                   
+                                                        
+                                                </div>
+                    
+                                                <div class="form-actions right">
+                                                  
+                                                    <button type="button" class="btn btn-raised btn-primary">
+                                                        Update
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row text-left justify-content-md-center"  *ngIf="userdetails.role==='USER'">
+                    <div class="col-md-6">
+                   
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Delete Account</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-block">
+                                
+                                        <div class="px-3">
+                                                <form class="form">
+                                                    
+                                                    <p>Will remove your account and all your data (resumes, user settings, media and all information related to you).</p>
+                        
+                                                    <div class="form-actions right">
+                                                      
+                                                        <button type="button" class="btn btn-raised btn-danger" (click) = "deleteConfirmAlert()">
+                                                            Delete Account
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+     <!--User's settings photos section starts-->
+    <!--User Profile Starts-->

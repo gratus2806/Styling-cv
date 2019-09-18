@@ -1,0 +1,529 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        <%= s.sanitize(resume.meta.name) %>
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://use.fontawesome.com/9985244d92.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600|Open+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="<%= host %>/templates/<%= s.sanitize(resume.meta.defaultTemplate.slug) %>/css/main.css">
+    <link rel="stylesheet" href="<%= host %>/admin/libs/apollo-font/style.css">
+    <style type="text/css">
+        <%=exportCustomCSS %>
+    </style>
+    <script type="text/javascript">
+        var templateHost = '<%= host %>';
+        var templateSlug = '<%= s.sanitize(resume.meta.defaultTemplate.slug) %>';
+
+        function getParameterByName(name, url) {
+            if (!url) {
+                url = window.location.href;
+            }
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        var isExport = getParameterByName('export');
+        var exportSize = getParameterByName('exportsize');
+        if (isExport != null) {
+            document.write('<link rel="stylesheet" href="' + templateHost + '/templates/' + templateSlug + '/css/export.css">');
+        }
+        if (exportSize != 'no-format' && exportSize != null && exportSize != undefined) {
+            document.write('<link rel="stylesheet" href="' + templateHost + '/templates/' + templateSlug + '/css/export-size.css">');
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+
+        <!--about me section-->
+        <div class="about-section">
+            <div class="about-name">
+                <span><%= s.sanitize(resume.meta.aboutSection.firstName) %></span>
+                <span><%= s.sanitize(resume.meta.aboutSection.lastName) %></span>
+            </div>
+            <div class="about-position">
+                <%= s.sanitize(resume.meta.aboutSection.currentPosition) %>
+            </div>
+            <div class="about-contacts">
+                <!--social links-->
+                <ul class="about-contacts-list">
+                    <% if (resume.meta.aboutSection && resume.meta.aboutSection.contacts) { %>
+                        <% resume.meta.aboutSection.contacts.forEach(function(contact){ %>
+                            <% if (contact.type != 'phone' && contact.type != 'address' && contact.type != 'email') { %>
+                                <li>
+                                    <a href="<%= s.sanitize(contact.value) %>" target="_blank">
+                                        <i class="<%= contact.icon %>" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <% } %>
+                                    <% }); %>
+                                        <% } %>
+                </ul>
+                <!--/social links-->
+                <div></div>
+                <!--address and phone-->
+                <ul class="about-contacts-list about-phone-address">
+                    <% if (resume.meta.aboutSection && resume.meta.aboutSection.contacts) { %>
+                        <% resume.meta.aboutSection.contacts.forEach(function(contact){ %>
+                            <% if (contact.type == 'phone') { %>
+                                <li>
+                                    <a href="tel:<%= contact.value %>">
+                                        <i class="<%= contact.icon %>" aria-hidden="true"></i>
+                                        <span class="phone-label"><%= contact.value %></span>
+                                    </a>
+                                </li>
+                                <% } %>
+                                    <% if (contact.type == 'address') { %>
+                                        <li>
+                                            <div>
+                                                <i class="<%= contact.icon %>" aria-hidden="true"></i>
+                                                <span class="phone-label"><%= contact.value %></span>
+                                            </div>
+                                        </li>
+                                        <% } %>
+                                            <% if (contact.type == 'email') { %>
+                                                <li>
+                                                    <a href="mailto:<%= contact.value %>">
+                                        <i class="<%= contact.icon %>" aria-hidden="true"></i>
+                                        <span class="phone-label"><%= contact.value %></span>
+                                    </a>
+                                                </li>
+                                                <% } %>
+                                                    <% }); %>
+                                                        <% } %>
+                </ul>
+                <!--/address and phone-->
+            </div>
+
+            <!--about description-->
+            <div class="about-description">
+                <p>
+                    <%- (resume.meta.aboutSection.aboutYourself) ? s.sanitize(resume.meta.aboutSection.aboutYourself.replace(/(?:\r\n|\r|\n)/g, '<br />')) : '' %>
+                </p>
+            </div>
+            <!--/about description-->
+        </div>
+        <!--/about me section-->
+
+        <!--resume sections-->
+        <div class="resume-sections">
+            <% resume.sections.forEach(function(section){ %>
+                <div class="section">
+                    <% if (section.type == 'section-work') { %>
+                        <% section.icon = 'fa-file'; %>
+                            <% } %>
+                                <div class="section-icon pull-left"><i class="fa <%= section.icon %>" aria-hidden="true"></i></div>
+                                <h2 class="section-title pull-left">
+                                    <%= section.name %>
+                                </h2>
+                                <div class="clearfix"></div>
+
+                                <!--text section-->
+                                <% if (section.type == 'section-text') { %>
+                                    <div class="section-text-content ">
+                                        <div class="section-text-content-inside">
+                                            <div class="subsection-main-ui subsection-main-text pull-left">
+                                                <div class="section-timeline section-timeline-default"></div>
+                                                <div>
+                                                    <%- s.sanitize(section.about) %>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        <!--/text section-->
+
+                                        <!--education section-->
+                                        <% if (section.type == 'section-education') { %>
+                                            <div class="section-education-content">
+                                                <div class="section-timeline"></div>
+
+                                                <% section.subsections.forEach(function(subsection){ %>
+                                                    <div class="section-education-content-inside">
+                                                        <div class="section-timeline-time"></div>
+                                                        <div class="subsection-education-main-ui pull-left">
+                                                            <p class="subsection-dates">
+                                                                <span><%= moment(subsection.start_time).format('YYYY') %></span> -
+                                                                <!-- end_time_present -->
+                                                                <% if (subsection.end_time_present == true) { %>
+                                                                    <span>present</span>
+                                                                    <% } %>
+                                                                        <% if (subsection.end_time_present != true) { %>
+                                                                            <span><%= moment(subsection.end_time).format('YYYY') %></span>
+                                                                            <% } %>
+                                                            </p>
+                                                            <p class="subsection-name-info">
+                                                                <%= s.sanitize(subsection.name) %> /
+                                                                    <%= s.sanitize(subsection.speciality) %>
+                                                            </p>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <% }); %>
+
+                                            </div>
+                                            <% } %>
+                                                <!--/education section-->
+
+                                                <!--work-experience section-->
+                                                <% if (section.type == 'section-work') { %>
+                                                    <div class="section-education-content">
+                                                        <div class="section-timeline"></div>
+                                                        <% section.subsections.forEach(function(subsection){ %>
+                                                            <div class="section-education-content-inside">
+                                                                <div class="section-timeline-time"></div>
+                                                                <div class="subsection-main-ui pull-left">
+                                                                    <p class="subsection-dates">
+                                                                        <span><%= moment(subsection.start_time).format('YYYY') %></span> -
+                                                                        <!-- end_time_present -->
+                                                                        <% if (subsection.end_time_present == true) { %>
+                                                                            <span>present</span>
+                                                                            <% } %>
+                                                                                <% if (subsection.end_time_present != true) { %>
+                                                                                    <span><%= moment(subsection.end_time).format('YYYY') %></span>
+                                                                                    <% } %>
+                                                                    </p>
+                                                                    <p class="subsection-name-info">
+                                                                        <%= s.sanitize(subsection.name) %>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="subsection-content-ui pull-left">
+                                                                    <div class="subsection-text-content">
+                                                                        <p class="subsection-name">
+                                                                            <%= s.sanitize(subsection.speciality) %>
+                                                                        </p>
+                                                                        <p class="subsection-about">
+                                                                            <%= s.sanitize(subsection.about) %>
+                                                                        </p>
+                                                                        <% if (subsection.company_url && subsection.company_url != '') { %>
+                                                                            <p class="subsection-name-info"><a href="<%= subsection.company_url %>"><i class="fa fa-external-link" aria-hidden="true"></i><span><%= subsection.company_url %></span></a></p>
+                                                                            <% } %>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                            <% }); %>
+                                                    </div>
+                                                    <% } %>
+                                                        <!--/work-experience section-->
+
+                                                        <!--projects/portfolio-->
+                                                        <% if (section.type == 'section-portfolio') { %>
+                                                            <div class="section-portfolio-content">
+                                                                <div class="section-timeline"></div>
+                                                                <% section.subsections.forEach(function(subsection){ %>
+                                                                    <div class="section-portfolio-content-inside">
+                                                                        <div class="section-timeline-time"></div>
+                                                                        <div class="subsection-main-ui pull-left">
+                                                                            <p class="subsection-timeline-title">
+                                                                                <%= s.sanitize(subsection.name) %>
+                                                                            </p>
+
+                                                                            <% if (subsection.image && subsection.image._Xmedium) { %>
+                                                                                <div class="subsection-about subsection-text-content subsection-text-content-portfolio">
+                                                                                    <%= s.sanitize(subsection.about) %>
+                                                                                </div>
+                                                                                <% } %>
+
+                                                                                    <% if (subsection.url && subsection.url != '') { %>
+                                                                                        <p class="subsection-name-info"><a href="<%= subsection.url %>"><i class="fa fa-external-link" aria-hidden="true"></i><span><%= s.sanitize(subsection.url) %></span></a></p>
+                                                                                        <% } %>
+
+                                                                        </div>
+                                                                        <div class="subsection-content-ui pull-left">
+                                                                            <% if (subsection.image && subsection.image._Xmedium) { %>
+                                                                                <div class="section-portfolio-content-image">
+                                                                                    <img src="<%= host %>/cdn/<%= s.sanitize(subsection.image._Xmedium) %>" alt="" />
+                                                                                </div>
+                                                                                <% } else { %>
+                                                                                    <div class="subsection-about subsection-text-content subsection-text-content-portfolio">
+                                                                                        <%= s.sanitize(subsection.about) %>
+                                                                                    </div>
+                                                                                    <% } %>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                    </div>
+                                                                    <% }); %>
+                                                            </div>
+                </div>
+                <% } %>
+                    <!--/projects/portfolio-->
+
+                    <!--clients logos-->
+                    <% if (section.type == 'section-logos') { %>
+                        <div class="section-logos-content">
+                            <div class="section-logos-content-inside">
+                                <div class="subsection-main-ui pull-left">
+                                    <div class="section-timeline section-timeline-short"></div>
+                                    <p class="subsection-about">
+                                        <%- (section.shortDescription) ? s.sanitize(section.shortDescription.replace(/(?:\r\n|\r|\n)/g, '<br />')) : '' %>
+                                    </p>
+                                </div>
+                                <div class="subsection-content-ui pull-left">
+                                    <ul class="logos-list">
+                                        <% section.subsections.forEach(function(subsection){ %>
+                                            <li>
+                                                <% if (subsection.url == '') { %>
+                                                    <div>
+                                                        <img src="<%= host %>/cdn/<%= subsection.image._Xthumb %>" alt="" />
+                                                    </div>
+                                                    <% } %>
+                                                        <% if (subsection.url != '') { %>
+                                                            <a href="<%= subsection.url %>" target="_blank">
+                                                            <img src="<%= host %>/cdn/<%= subsection.image._Xthumb %>" alt="" />
+                                                        </a>
+                                                            <% } %>
+                                            </li>
+                                            <% }); %>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <% } %>
+
+                            <!--/clients logos-->
+
+                            <!--skillset-->
+                            <% if (section.type == 'section-skillset') { %>
+                                <div class="section-skillset-content">
+                                    <div class="section-skillset-content-inside">
+                                        <div class="subsection-main-ui pull-left">
+                                            <div class="section-timeline section-timeline-short"></div>
+                                            <p class="subsection-about">
+                                                <%- (section.shortDescription) ? s.sanitize(section.shortDescription.replace(/(?:\r\n|\r|\n)/g, '<br />')) : '' %>
+                                            </p>
+                                        </div>
+                                        <div class="subsection-content-ui pull-left">
+                                            <% section.subsections.forEach(function(subsection){ %>
+                                                <div class="skill-entity">
+                                                    <p class="subsection-timeline-title subsection-timeline-title-bar">
+                                                        <%= s.sanitize(subsection.name) %>
+                                                    </p>
+                                                    <div class="skill-bar">
+                                                        <div class="skill-bar-indicator" style="width: <%= s.sanitize(subsection.proficiency) %>%;"></div>
+                                                    </div>
+                                                </div>
+                                                <% }); %>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                <% } %>
+                                    <!--/skillset-->
+
+                                    <!--languages-->
+                                    <% if (section.type == 'section-languages') { %>
+                                        <div class="section-skillset-content">
+                                            <div class="section-skillset-content-inside">
+                                                <div class="subsection-main-ui pull-left">
+                                                    <div class="section-timeline section-timeline-short"></div>
+                                                    <p class="subsection-about">
+                                                        <%- (section.shortDescription) ? s.sanitize(section.shortDescription.replace(/(?:\r\n|\r|\n)/g, '<br />')) : '' %>
+                                                    </p>
+                                                </div>
+                                                <div class="subsection-content-ui pull-left">
+                                                    <% section.subsections.forEach(function(subsection){ %>
+                                                        <div class="skill-entity">
+                                                            <p class="subsection-timeline-title subsection-timeline-title-bar">
+                                                                <%= s.sanitize(subsection.name) %>
+                                                            </p>
+                                                            <div class="skill-bar">
+                                                                <div class="skill-bar-indicator" style="width: <%= s.sanitize(subsection.proficiency) %>%;"></div>
+                                                            </div>
+                                                        </div>
+                                                        <% }); %>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                            <!--/languages-->
+
+                                            <!--interests-->
+                                            <% if (section.type == 'section-interests') { %>
+                                                <div class="section-skillset-content">
+                                                    <div class="section-skillset-content-inside">
+                                                        <div class="subsection-main-ui pull-left">
+                                                            <div class="section-timeline section-timeline-short"></div>
+                                                            <p class="subsection-about">
+                                                                <%- (section.shortDescription) ? s.sanitize(section.shortDescription.replace(/(?:\r\n|\r|\n)/g, '<br />')) : '' %>
+                                                            </p>
+                                                        </div>
+                                                        <div class="subsection-content-ui pull-left">
+                                                            <ul class="interests-list">
+                                                                <% section.subsections.forEach(function(subsection){ %>
+                                                                    <li>
+                                                                        <%= s.sanitize(subsection.name) %>
+                                                                    </li>
+                                                                    <% }); %>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                                <% } %>
+                                                    <!--/interests-->
+
+                                                    <!--references-->
+                                                    <% if (section.type == 'section-references') { %>
+                                                        <div class="section-portfolio-content">
+                                                            <div class="section-timeline"></div>
+                                                            <% section.subsections.forEach(function(subsection){ %>
+                                                                <div class="section-portfolio-content-inside">
+                                                                    <div class="section-timeline-time"></div>
+                                                                    <div class="subsection-main-ui pull-left">
+                                                                        <p class="subsection-timeline-title">
+                                                                            <%= s.sanitize(subsection.person_name) %>
+                                                                        </p>
+                                                                        <div class="subsection-about subsection-text-content subsection-text-content-portfolio person-title-company">
+                                                                            <%= s.sanitize(subsection.person_title) %> /
+                                                                                <%= subsection.company %>
+                                                                        </div>
+                                                                        <div class="subsection-about subsection-text-content subsection-text-content-portfolio">
+                                                                            <%= s.sanitize(subsection.contact) %>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="subsection-content-ui pull-left">
+                                                                        <div class="subsection-about subsection-text-content">
+                                                                            <%= s.sanitize(subsection.about) %>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                                <% }); %>
+                                                        </div>
+                                                        <% } %>
+                                                            <!--/references-->
+
+                                                            <!--awards-->
+                                                            <% if (section.type == 'section-awards') { %>
+                                                                <div class="section-education-content">
+                                                                    <div class="section-timeline"></div>
+                                                                    <% section.subsections.forEach(function(subsection){ %>
+                                                                        <div class="section-education-content-inside">
+                                                                            <div class="section-timeline-time"></div>
+                                                                            <div class="subsection-main-ui pull-left">
+                                                                                <p class="subsection-dates">
+                                                                                    <span><%= moment(subsection.award_date).format('YYYY') %></span>
+                                                                                </p>
+                                                                                <p class="subsection-name-info">
+                                                                                    <%= subsection.issuer %>
+                                                                                </p>
+                                                                                <% if (subsection.award_url && subsection.award_url != '') { %>
+                                                                                    <p class="subsection-name-info"><a href="<%= subsection.company_url %>"><i class="fa fa-external-link" aria-hidden="true"></i><span><%= subsection.award_url %></span></a></p>
+                                                                                    <% } %>
+                                                                            </div>
+                                                                            <div class="subsection-content-ui pull-left">
+                                                                                <div class="subsection-text-content">
+                                                                                    <p class="subsection-name">
+                                                                                        <%= subsection.name %>
+                                                                                    </p>
+                                                                                    <p class="subsection-about">
+                                                                                        <%= s.sanitize(subsection.about) %>
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="clearfix"></div>
+                                                                        </div>
+                                                                        <% }); %>
+                                                                </div>
+                                                                <% }; %>
+                                                                    <!--/awards-->
+
+                                                                    <!--certifications-->
+                                                                    <% if (section.type == 'section-certifications') { %>
+                                                                        <div class="section-education-content">
+                                                                            <div class="section-timeline"></div>
+                                                                            <% section.subsections.forEach(function(subsection){ %>
+                                                                                <div class="section-education-content-inside">
+                                                                                    <div class="section-timeline-time"></div>
+                                                                                    <div class="subsection-main-ui pull-left">
+                                                                                        <p class="subsection-dates">
+                                                                                            <span><%= moment(subsection.certification_date).format('YYYY') %></span>
+                                                                                        </p>
+                                                                                        <p class="subsection-name-info">
+                                                                                            <%= subsection.authority %>
+                                                                                        </p>
+                                                                                        <% if (subsection.certification_url && subsection.certification_url != '') { %>
+                                                                                            <p class="subsection-name-info"><a href="<%= subsection.company_url %>"><i class="fa fa-external-link" aria-hidden="true"></i><span><%= subsection.certification_url %></span></a></p>
+                                                                                            <% } %>
+                                                                                    </div>
+                                                                                    <div class="subsection-content-ui pull-left">
+                                                                                        <div class="subsection-text-content">
+                                                                                            <p class="subsection-name">
+                                                                                                <%= subsection.name %>
+                                                                                            </p>
+                                                                                            <p class="subsection-about">
+                                                                                                <%= s.sanitize(subsection.about) %>
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="clearfix"></div>
+                                                                                </div>
+                                                                                <% }); %>
+                                                                        </div>
+                                                                        <% }; %>
+                                                                            <!--/certifications-->
+
+                                                                            <!--publications-->
+                                                                            <% if (section.type == 'section-publications') { %>
+                                                                                <div class="section-education-content">
+                                                                                    <div class="section-timeline"></div>
+                                                                                    <% section.subsections.forEach(function(subsection){ %>
+                                                                                        <div class="section-education-content-inside">
+                                                                                            <div class="section-timeline-time"></div>
+                                                                                            <div class="subsection-main-ui pull-left">
+                                                                                                <p class="subsection-dates">
+                                                                                                    <span><%= moment(subsection.publication_date).format('YYYY') %></span>
+                                                                                                </p>
+                                                                                                <p class="subsection-name-info">
+                                                                                                    <%= subsection.publisher %>
+                                                                                                </p>
+                                                                                                <% if (subsection.publication_url && subsection.publication_url != '') { %>
+                                                                                                    <p class="subsection-name-info"><a href="<%= subsection.company_url %>"><i class="fa fa-external-link" aria-hidden="true"></i><span><%= subsection.publication_url %></span></a></p>
+                                                                                                    <% } %>
+                                                                                            </div>
+                                                                                            <div class="subsection-content-ui pull-left">
+                                                                                                <div class="subsection-text-content">
+                                                                                                    <p class="subsection-name">
+                                                                                                        <%= s.sanitize(subsection.name) %>
+                                                                                                    </p>
+                                                                                                    <p class="subsection-about">
+                                                                                                        <%= s.sanitize(subsection.about) %>
+                                                                                                    </p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="clearfix"></div>
+                                                                                        </div>
+                                                                                        <% }); %>
+                                                                                </div>
+                                                                                <% }; %>
+                                                                                    <!--/publications-->
+                                                                                    <!-- <p>section: <%= section.type %></p> -->
+        </div>
+        <% }); %>
+    </div>
+    <!--/resume sections-->
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="/templates/<%= s.sanitize(resume.meta.defaultTemplate.slug) %>/js/main.js"></script>
+</body>
+
+</html>

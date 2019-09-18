@@ -1,0 +1,37 @@
+ 
+            <!--	  section preview-->
+            <div class="card" *ngIf='list'>
+                <div class="card-header">
+                    <div class="card-header-icon d-inline-block	float-left font-medium-2"> <i class="ft-bell mr-1 p-1 "></i> </div>
+                    <div class="d-inline-block">
+                        <h4 class="card-title text-bold-500 primary">Education History ---- this should be dynamic </h4>
+                        <h6 class="card-subtitle ">This section is the heart of your resume so make sure you write it well. Follow these simple guidelines:
+                        </h6>
+                    </div>
+                    <div ngbDropdown placement="bottom-right" class="d-inline-block actions float-right"> <i class="ft-more-vertical mr-1 text-muted" ngbDropdownToggle id="CardSetting"></i>
+                        <div ngbDropdownMenu aria-labelledby="CardSetting">
+                            <button class="dropdown-item">Rename</button>
+                            <button class="dropdown-item">Change Icon</button>
+                            <button class="dropdown-item">Hide</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" aria-expanded="true">
+                    <div class="card-block">
+               <!--	  //section preview-->
+    
+            here should be the sub section list 
+            <!--	  section form add new-->
+     
+
+                    </div>
+                </div>
+                <div class="card-footer"> <span class="text-muted float-left">ABCD</span>
+                    <div class="float-right ">
+                        <a class="btn  mr-1 btn-sm btn-raised  btn-info" (click)="onAdd()"> <i class="ft-plus mr-1"></i> add new </a>
+                    </div>
+                </div>
+            </div>
+          

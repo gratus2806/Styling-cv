@@ -1,0 +1,85 @@
+<!--Registration Page Starts-->
+<section id="regestration">
+    <div class="container">
+        <div class="row full-height-vh">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row d-flex">
+                            <div class="col-12 col-sm-12 col-md-6 gradient-deep-orange-orange">
+                                <div class="card-block">
+                                    <div class="card-img overlap">
+                                        <img alt="Card image cap" src="assets/img/elements/13.png" width="350" class="mx-auto d-block">
+                                    </div>
+                                    <h2 class="card-title font-large-1 text-center white mt-3">Registration</h2>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 d-flex align-items-center">
+                                <div class="card-block mx-auto">
+                                    <form (ngSubmit)="f.valid && onSubmit(f)" #f="ngForm">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="icon-user"></i>
+                                                </span>
+                                            </div>
+                                            <!-- <input type="text" class="form-control" name="fname" id="fname" placeholder="First Name" ngModel required> -->
+                                            <input type="text" #firstName="ngModel" class="form-control" [(ngModel)]="userService.selectedUser.firstName" name="firstName" placeholder="First Name" [ngClass]="{'invalid-textbox' :f.submitted && !firstName.valid }">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="icon-user"></i>
+                                                </span>
+                                            </div>
+                                            <!-- <input type="text" class="form-control" name="lname" id="lname" placeholder="Last Name" ngModel required> -->
+                                            <input type="text" #lastName="ngModel" class="form-control" [(ngModel)]="userService.selectedUser.lastName" name="lastName" placeholder="Last Name" [ngClass]="{'invalid-textbox' :f.submitted && !lastName.valid }">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="ft-mail"></i>
+                                                </span>
+                                            </div>
+                                            <!-- <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" ngModel required email> -->
+                                            <input type="text" #email="ngModel" class="form-control" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="Email" required [pattern]="emailRegex" [ngClass]="{'invalid-textbox' :f.submitted && !email.valid }">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="ft-lock"></i>
+                                                </span>
+                                            </div>
+                                            <!-- <input type="password" class="form-control" name="inputPass" id="inputPass" placeholder="Password" ngModel required> -->
+                                            <input type="password" class="form-control" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password" minlength="4" required [ngClass]="{'invalid-textbox' :f.submitted && !password.valid }">
+                                            <div *ngIf="f.submitted && password.errors">
+                                                <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+                                                <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="form-group col-sm-offset-1">
+                                            <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                                <input type="checkbox" class="custom-control-input" checked id="terms">
+                                                <label class="custom-control-label pl-2" for="terms">I agree <a>terms and conditions</a></label>
+                                            </div>
+                                        </div> -->
+                                        <div class="form-group text-center">
+                                            <!-- <input type="submit" value="Sign Up"> -->
+                                            <button type="submit" class="btn btn-warning btn-raised" [disabled]="!f.valid">Start Creating My Resume</button>
+                                        </div>
+                                        <a class="btn btn-social btn-min-width mr-2 mb-2 btn-google" (click)="googlelogin()"><span class="fa fa-google"></span> Google</a>
+                                        <a class="btn btn-social btn-min-width mr-2 mb-2 btn-facebook" (click)="facebooklogin()"><span class="fa fa-facebook"></span> Facebook</a>
+                                        <!-- <a href="http://127.0.0.1:3000/api/auth/linkedin" class="btn btn-social btn-min-width mr-2 mb-2 btn-linkedin">LinkedIn</a> -->
+                                        <a class="btn btn-social btn-min-width mr-2 mb-2 btn-linkedin" (click)="linkedinlogin()"><span class="fa fa-linkedin"></span> LinkedIn</a>
+                                        <a class="btn btn-social btn-min-width mr-2 mb-2 btn-twitter" (click)="twitterlogin()"><span class="fa fa-twitter"></span> Twitter</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Registration Page Ends-->

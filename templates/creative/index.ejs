@@ -1,0 +1,23 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title><%= s.sanitize(resume.meta.name) %></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://use.fontawesome.com/9985244d92.js"></script>
+        <link rel="stylesheet" href="/templates/<%= s.sanitize(resume.meta.defaultTemplate.slug) %>/css/main.css">
+    </head>
+    <body>
+
+        <!-- Add your site or application content here -->
+        <p>Hello world! This is HTML5 Boilerplate.</p>
+        <p><%= s.sanitize(resume.meta.name) %></p>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+        
+        <script src="/templates/<%= s.sanitize(resume.meta.defaultTemplate.slug) %>/js/main.js"></script>
+    </body>
+</html>

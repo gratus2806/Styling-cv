@@ -1,0 +1,195 @@
+<div class="row">
+        <div class="col-12">
+            <!--section preview-->
+            <div class="card" *ngIf='list'>
+                <div class="card-header d-flex justify-content-between ">
+                    <div class="card-header-icon d-inline-block	float-left font-medium-2"> <i class="ft-bell mr-1 p-1 "></i>
+                    </div>
+                    <div class="d-inline-block flex-grow-1">
+                        <h4 class="card-title text-bold-500 primary">Client Logos</h4>
+                        <h6 class="card-subtitle ">This section is the heart of your resume so make sure you write it well.
+                            Follow these simple guidelines:
+                        </h6>
+                    </div>
+                    <div ngbDropdown placement="bottom-right" class="d-inline-block actions float-right">
+                        <i class="ft-more-vertical noArrow mr-1 text-muted" ngbDropdownToggle id="CardSetting"></i>
+                        <div ngbDropdownMenu aria-labelledby="CardSetting">
+                            <button class="dropdown-item">Rename</button>
+                            <button class="dropdown-item">Change Icon</button>
+                            <button class="dropdown-item">Hide</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" aria-expanded="true">
+                    <div class="card-block">
+                        <div class="drag-drop-wrapper">
+                            <ul class="list-group list-group-flush drag-drop-container" [dragula]="MANY_ITEMS"
+                                [(dragulaModel)]="clientlogoArray" id="left">
+                                <li *ngFor="let clientLogo of clientlogoArray" class="list-group-item">
+                                    <!-- <div class="actions">
+                                    <i class="ft-move mr-1 grey p-1"></i>
+                                    <i class="ft-menu mr-1 info p-1"></i>
+                                </div> -->
+                                    <div class="d-flex pl-3 justify-content-between align-content-center list-item-dragable">
+                                        <div class="flex-grow-1">
+                                            <img *ngIf="clientLogo.logo" [(src)]="clientLogo.logo" [width]="100"
+                                                [height]="100" ([ngModel])="data.image" name="image" class="img-border media-bordered border gradient-summer width-150 height-150"  />
+
+
+                                            <a (click)=onEdit(clientLogo)>
+                                                <h5 class="font-medium-2 text-bold-500 black"> {{clientLogo.name}} </h5>
+                                            </a>
+                                            <h6 class="card-subtitle "> Duration - <em class="blue">10th May 2002 - 15th
+                                                    June
+                                                    2003</em>
+                                            </h6>
+                                        </div>
+                                        <div class="actions">
+                                            <i class="ft-edit mr-1 info p-1" (click)=onEdit(clientLogo) placement="top"
+                                                ngbTooltip="Edit"></i>
+                                            <i class="ft-copy mr-1 green p-1" (click)=onClone(clientLogo) placement="top"
+                                                ngbTooltip="Copy"></i>
+                                            <i class="ft-trash-2 danger p-1" (click)=onDelete(clientLogo.ids)
+                                                placement="top" ngbTooltip="Delete"></i>
+                                            <i class="handle ft-move mr-1 grey p-1 cursorMove" placement="top"
+                                                ngbTooltip="Move"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+    
+    
+                    <button type="button" class="btn btn-outline-danger mr-1  btn-raised float-left" id="confirm-cancel"
+                        (click)="confirmCancelButton()">Delete Section</button>
+                    <div class="float-right">
+    
+                        <a class="btn  mr-1 btn-raised  btn-info" (click)="onAdd()"> <i class="fa fa-add-to-list mr-1"></i>
+                            Add New
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--	  //section preview-->
+            <!--	  section form add new-->
+            <div class="card" *ngIf="add">
+                <form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)" class=" w-100">
+                    <div class="card-header">
+                        <div class="card-header-icon d-inline-block	float-left font-medium-2"> <i
+                                class="ft-bell mr-1 p-1 "></i>
+                        </div>
+                        <div class="d-inline-block">
+                            <h4 class="card-title text-bold-500 primary">Client Logos</h4>
+                            <!-- <h6 class="card-subtitle ">Special title treatment</h6> -->
+                        </div>
+                    </div>
+                    <div class="card-body" aria-expanded="true">
+                        <div class="align-self-center text-center">
+                            <a class="profile-image">
+                                    <img *ngIf="clientLogo.logo" [(src)]="clientLogo.logo" [width]="cropperSettings.croppedWidth"
+                                    [height]="cropperSettings.croppedHeight"  class="img-border media-bordered border gradient-summer width-150" ([ngModel])="data.image" name="image" />
+
+
+                                </a>
+                            <div>
+                                <img [(src)]="data.image" [width]="cropperSettings.croppedWidth"
+                                    [height]="cropperSettings.croppedHeight" class="img-border media-bordered border gradient-summer width-150 height-150" ([ngModel])="data.image" name="image" />
+
+                                <div class="file-upload">
+                                    <span class="text">upload</span>
+                                    <input id="custom-input" type="file" (change)="fileChangeListener($event)" />
+                                </div>
+                                <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+                                <br />
+                               
+                            </div>
+                        </div>
+                        <div class="card-block">
+    
+                            <label for="basic-url">Name</label>
+                            <div class="input-group">
+                                <input type="text" [(ngModel)]="logo.name" name="name" class="form-control" id="basic-url"
+                                    aria-describedby="basic-addon3">
+                            </div>
+    
+                            <label for="basic-url">URL</label>
+                            <div class="input-group">
+                                <input type="text" [(ngModel)]="logo.url" name="url" class="form-control" id="basic-url"
+                                    aria-describedby="basic-addon3">
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a class="float-left btn btn-flat mr-1 btn-warning" (click)="onCancel()"
+                            href="javascript:void(0)">Cancel</a>
+                        <button class=" float-left btn  mr-1   btn-raised  btn-secondary" (click)='onBack()'>Delete</button>
+                        <div class="float-right ">
+                            <button class="btn  mr-1   btn-raised  btn-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    
+            <div class="card" *ngIf="edit">
+                <form #editForm="ngForm" (ngSubmit)="onEditSubmit(editForm)" class="w-100">
+                    <input type="hidden" name="ids" [(ngModel)]="logo.ids">
+                    <div class="card-header">
+                        <div class="card-header-icon d-inline-block	float-left font-medium-2"> <i
+                                class="ft-bell mr-1 p-1 "></i>
+                        </div>
+                        <div class="d-inline-block">
+                            <h4 class="card-title text-bold-500 primary">Client Logos</h4>
+                            <!-- <h6 class="card-subtitle ">Special title treatment</h6> -->
+                        </div>
+                    </div>
+                    <div class="card-body" aria-expanded="true">
+                        <div class="align-self-center text-center">
+                            <a class="profile-image">
+                                    <img [(src)]="data.image" [width]="cropperSettings.croppedWidth"
+                                    [height]="cropperSettings.croppedHeight" class="img-border media-bordered border gradient-summer width-150 height-150" ([ngModel])="data.image" name="image" />
+  
+                            </a>
+                            <div>
+                                <div class="file-upload">
+                                    <span class="text">upload</span>
+                                    <input id="custom-input" type="file" (change)="fileChangeListener($event)" />
+                                </div>
+                                <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+                      
+                                
+                            </div>
+                        </div>
+                        <div class="card-block">
+    
+                            <label for="basic-url">Name</label>
+                            <div class="input-group">
+                                <input type="text" [(ngModel)]="logo.name" name="name" class="form-control" id="basic-url"
+                                    aria-describedby="basic-addon3">
+                            </div>
+    
+                            <label for="basic-url">URL</label>
+                            <div class="input-group">
+                                <input type="text" [(ngModel)]="logo.url" name="url" class="form-control" id="basic-url"
+                                    aria-describedby="basic-addon3">
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a class="float-left btn btn-flat mr-1 btn-warning" (click)="onCancel()"
+                            href="javascript:void(0)">Cancel</a>
+                        <button class=" float-left btn  mr-1   btn-raised  btn-secondary" (click)='onBack()'>Delete</button>
+                        <div class="float-right ">
+                            <button class="btn  mr-1   btn-raised  btn-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

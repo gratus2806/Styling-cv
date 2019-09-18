@@ -1,0 +1,365 @@
+<!-- who have already resume -->
+
+<div *ngIf="showDashboardContent1" class="row">
+        <div class="col-12 col-lg-8 col-md-8"> 
+          
+          <!-- <div class="content-header" *ngIf="userDetails">{{dashboard.HI | translate}} {{userDetails.firstName.split(' ')[0]}}</div> -->
+           <div class="card">
+            <div class="card-header"> </div>
+            <div class="card-body" aria-expanded="true">
+              <div class="card-block">
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              
+             </div>
+            </div> 
+            <div class="card-footer">
+              <div *ngIf="showDashboardContent1" >
+                <div   *ngFor="let dashboard of dashboardItems">
+                   <button  class="btn btn-primary btn-warning"  (click)="add(userDetails,'CoverLetter') "> <i class="ft-plus"></i> {{dashboard.CreateCoverLetter |translate}}</button>
+                   <button  class="btn btn-primary  ml-4"  (click)="add(userDetails,'WebSite') "> <i class="ft-plus"></i> New Website</button>
+                   <a  class="btn btn-primary  btn-warning  ml-4"  routerLink="/pricing" placement="top" ngbTooltip="Premium User ONLY"><i class="ft-plus"></i>  {{dashboard.CreateCoverLetter |translate}}</a>
+                   <button  class="btn btn-primary btn-success ml-4" (click)="add(userDetails,'Resume') "><i class="ft-plus"></i>  {{dashboard.CreateResume | translate}}</button>
+                   <!-- *ngIf="userdetails.role==='OPS'"
+                   *ngIf="userdetails.role==='USER'" -->
+                   
+                </div>
+              </div>
+              </div>
+          </div>
+
+
+
+<!-- list of all resumes -->
+
+<div class="col-12" *ngFor="let dashboard of dashboardItems">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-4 col-lg-4" *ngFor="let resume of userService.resume">
+          <div class="card border border-primary"  [ngClass]="{'border-success': resume.meta.type==='CoverLetter'}">
+              <!-- <div class="card border border-primary"  [ngClass]="{'border-primary': resume.meta.type==='CoverLetter'}" > -->
+
+            <div class="card-header text-center" (click)="onEdit(resume)">
+               <img src="./assets/img/portrait/small/avatar-s-3.png" alt="Brek" width="150" class="rounded-circle gradient-mint"> 
+              </div>
+                <!-- <img src="./assets/img/templates/{{resume.meta.defaultTemplate.slug}}/img/preview-min.jpg" alt="Brek" width="150" class="rounded-circle gradient-mint w-100 h-100">  -->
+            <div class="card-body">
+              <div class="card-block">
+                <a (click)="onEdit(resume)">
+                <h4 class="card-title text-primary  text-center" >{{resume.meta.name}}</h4></a>
+                <p class="category text-gray font-small-4  text-center">resume template: {{resume.meta.defaultTemplate.name}}</p>
+                
+   
+                  <div class=" text-center">
+                      <a   class="btn btn-info mr-1 btn-fab" (click)="onEdit(resume)" placement="top" ngbTooltip="Edit">
+                          <i  class="ft-edit p-1"></i>
+                        </a>
+
+                      <a   class="btn btn-green mr-1 btn-fab" (click)="onClone(resume)" placement="top" ngbTooltip="Clone">
+                          <i  class="ft-copy p-1"></i>
+                        </a>
+
+                      <a   class="btn btn-danger mr-1 btn-fab" (click)="onDelete(resume)" placement="top" ngbTooltip="Delete!">
+                        <i  class="ft-trash-2 p-1"></i>
+                      </a>
+              </div>
+                <hr class="grey">
+                <div class="row grey">
+                  <div class="col-12"> <a><i class="ft-star mr-1"></i> Created in: <strong class="font-weight-normal">{{resume.createdAt | date}}</strong></a> </div>
+                  <div class="col-12"> <a><i class="ft-globe mr-1"></i>Language:  <strong>{{resume.meta.ResumeLanguage}}</strong></a> </div>
+                  <div class="col-12"> <a><i class="ft-book mr-1"></i>Type: <strong>{{resume.meta.type}}</strong></a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- //list of all resumes -->
+
+
+        </div>
+        <div class="col-12 col-lg-4 col-md-4"> 
+          
+          <!-- Resume Status -->
+          
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Resume Stats</h4>
+            </div>
+            <div class="card-body">
+              <div class="card-block">
+                <div class="row mb-3">
+                  <div class="col"> <span class="mb-1 text-muted d-block">You Have {{userService?.resume?.length}} resume/cover letter </span> 
+                    
+                    <!-- <ngb-progressbar type="success"  type="info"  height=".5rem" [value]="{{userService.resume.length}}"></ngb-progressbar> --> 
+                    
+                  </div>
+                  <div class="col"> <span class="mb-1 text-muted d-block">14% - In Progress</span> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ///Resume Status -->
+          
+          <div class="card text-center gradient-stylingcv  white">
+            <div class="card-header">
+              <h4 class="card-title">Get Premium Account</h4> 
+            </div>
+            <div class="card-body" aria-expanded="true">
+              <div class="card-block"> <img alt="" class="width-50-per" src="assets/img/svg/yearly.svg" style="max-width:200px"></div>
+              <div class="card-block">
+                <p class="card-text">Unlock The Power Of StylingCV with Premium Account</p>
+                <a  routerLink="/pricing"  class="btn btn-primary">Upgrade my Account</a> </div>
+            </div>
+            <div class="card-footer"> <span class="text-white">Everything you need to get hired fast. In one place. </span> </div>
+          </div>
+        </div>
+      </div>
+    
+      
+      <!-- who have already resume --> 
+      
+      <div *ngIf="!showDashboardContent2">
+        <div class="row">
+          <div class="col-md-6 col-sm-12 offset-md-3 offset-lg-3" *ngFor="let dashboard of dashboardItems">
+            <div class="d-block text-center mt-4"> <img src="assets/img/svg/tie.svg" width="66px" alt="">
+              <div class="clearfix"></div>
+              <span class="mt-3 d-inline-block"> {{dashboard.YourJobFunctionality | translate}} </span> </div>
+            <div class="buttons-holder mt-4">
+              <div *ngFor="let functionality of functionalityArray">
+                <button class="btn btn-outline-primary mr-1 btn-round" (click)="fucntionalityfucntion(functionality.name) "> {{functionality.name | translate}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!showDashboardContent3">
+        <form #resumeForm="ngForm" (ngSubmit)="resumeForm.valid && next(resumeForm)">
+        <div class="row" *ngFor="let dashboard of dashboardItems">
+        <div class="col-md-6 col-sm-12 offset-md-3 offset-lg-3">
+        <form #resumeForm="ngForm" (ngSubmit)="resumeForm.valid && next(resumeForm)">
+          <div class="d-block text-center mt-4">
+            <h4 class="head-wLine"> <span> {{dashboard.ResumeName | translate}}</span> </h4>
+            <p> {{dashboard.Awellcomposedresumecan | translate}} 
+              <strong>{{dashboard.literallychange | translate}}</strong>            
+              {{dashboard.yourlife |translate}} </p>
+          </div>
+          <div class="form-body">
+            <div class="form-group">
+              <label for="resName">{{dashboard.ResumeName | translate}}</label>
+              <input class="form-control" id="resName" type="text" name="meta" [(ngModel)]="meta" placeholder="ex: Resume-Marketing" required autofocus>
+            </div>
+          </div>
+          <div class="form-actions center">
+            <button class="btn btn-raised btn-primary px-3"> <i class="fa fa-arrow-right8"></i> {{dashboard.LetsStart | translate}} </button>
+          </div>
+        </form>
+      </div>
+      </div>
+      </form>
+      </div>
+      <div *ngIf="!showDashboardContent4" class="resLang">
+        <div class="row" *ngFor="let dashboard of dashboardItems">
+          <div class="col-md-6 col-sm-12 offset-md-3 offset-lg-3">
+            <div class="d-block text-center mt-4">
+              <h4 class="head-wLine"> <span>{{dashboard.Resumelanguage | translate}}</span> </h4>
+              <p>{{dashboard.Selecttextdirection | translate}} </p>
+            </div>
+            <div class="d-block text-center">
+              <div class="row">
+                
+                <div (click)="language('English')" class="col-md-4 col-12  mt-2">
+                  <div class="fonticon-container border border-2 p-2  bg-white card text-center">
+                  <label class="fonticon-classname">{{'English'  | translate }}</label>
+                  <div class="fonticon-wrap d-block float-none text-center w-100"> 
+                      <img _ngcontent-c3="" alt="English" class="langimg" src="./assets/img/flags/us.png">
+                   </div>
+                  <label class="fonticon-unit"> <em class="info">{{'Left Direction'  | translate}} <br>
+                   
+                  </em> </label>
+                </div>
+                </div>
+                <div (click)="language('Spanish')" class="col-md-4 col-12  mt-2">
+                  <div class="fonticon-container border border-2 p-2  bg-white card  text-center">
+                    <label class="fonticon-classname">{{'Spanish' | translate }}</label>
+                    <div class="fonticon-wrap d-block float-none text-center w-100"> 
+                        <img _ngcontent-c3="" alt="English" class="langimg" src="./assets/img/flags/es.png">
+                    </div>
+                    <label class="fonticon-unit"> <em class="info">{{'Left Direction'  | translate}} <br>
+                       
+                    </em> </label>
+                   </div>
+                </div>
+                  <div (click)="language('Portuguese')" class="col-md-4 col-12  mt-2">
+                  <div class="fonticon-container border border-2 p-2  bg-white card text-center">
+                      <label class="fonticon-classname">{{'Portuguese' | translate }}</label>
+                      <div class="fonticon-wrap d-block float-none text-center w-100"> 
+                          <img _ngcontent-c3="" alt="English" class="langimg" src="./assets/img/flags/br.png">
+                      </div>
+                      <label class="fonticon-unit"> <em class="info">{{'Left Direction'  | translate}} <br>
+                    
+                      </em> </label>
+                     </div>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-2 d-none d-lg-block"></div>
+                    <div (click)="language('German')" class="col-md-4 col-12 mt-2 ">
+                  <div class="fonticon-container border border-2 p-2  bg-white card text-center">
+                        <label class="fonticon-classname">{{'German' | translate}}</label>
+                        <div class="fonticon-wrap d-block float-none text-center w-100">
+                            <img _ngcontent-c3="" alt="English" class="langimg" src="./assets/img/flags/de.png">   
+                        </div>
+                        <label class="fonticon-unit"> <em class="info">{{'Left Direction'  | translate}} <br>
+                         
+                        </em> </label>
+                     </div>
+                </div>
+               <div (click)="language('Arabic')" class="col-md-4 col-12 mt-2">
+                  <div class="fonticon-container border border-2 p-2  bg-white card text-center">
+                  <label class="fonticon-classname">{{'Arabic' | translate}}</label>
+                  <div class="fonticon-wrap d-block float-none text-center w-100"> 
+                      <img _ngcontent-c3="" alt="English" class="langimg" src="./assets/img/flags/ar.png">
+                  </div>
+                  <label class="fonticon-unit"> <em class="info"> {{'Right Direction' | translate}}</em> </label>
+                </div>
+                </div>
+                <div class="col-2 d-none d-lg-block"></div>
+              </div>
+           
+         
+          </div>
+        </div>
+      </div>
+      </div>
+      <div *ngIf="!showDashboardContent5">
+        <div class="container" *ngFor="let dashboard of dashboardItems">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="d-block text-center mt-4">
+                <h4 class="head-wLine"> <span> {{dashboard.ResumeTemplate | translate}}</span> </h4>
+                <p class="alert alert-dark text-center" role="alert" type="dark">{{dashboard.name2 | translate}}</p>
+              </div>
+              <div class="row mt-4 resLang"> 
+                  <!-- should be repeater -->
+
+                   
+                <div class="col col-md-4 col-sm-12 col-lg-4" *ngFor="let item of templates; let i = index">
+                  <div class="border border-2  bg-white card">
+                    <div class="card-body"> 
+                       
+                      <img alt="{{item.name}}" class="card-img-top img-fluid" (click)="template(item)" src="assets/img/templates/{{item.slug}}/img/preview-min.jpg">
+                      <div class="card-block  text-center">
+                        <h4 class="card-title">{{item.name}}</h4>
+                        <a class="btn btn-outline-info btn-round mt-2" (click)="template(item)">Use this template</a> </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- should be repeater --> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!showDashboardContent6">
+        <div class="container" *ngFor="let dashboard of dashboardItems">
+          <div class="row ">
+            <div class="col-md-12">
+              <div class="d-block text-center mt-4">
+                <h4 class="head-wLine"> <span> {{dashboard.ExperienceLevel | translate}}</span> </h4>
+                <div class="clearfix"></div>
+                <p>{{dashboard.name2 | translate}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="row resLang"> 
+            <!-- experience('Entry') -->
+            <div class="col col-md-4 col-sm-12 col-lg-4">
+              <div class="border border-2   bg-white card" (click)="experience('Entry')">
+                <div class="card-body text-center my-3"> <img class="img-fluid mb-2" width="90px" src="assets/img/svg/student.svg">
+                  <div class="card-block  text-center"> 
+                    <h4 class="card-title">{{dashboard.StudentJunior | translate}}</h4>
+                    <p> {{dashboard.name3 | translate}} {{dashboard.Years | translate}} </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- .// experience('Entry') --> 
+            <!--   experience('Mid') -->
+            <div class="col col-md-4 col-sm-12 col-lg-4">
+              <div class="border border-2    bg-white card" (click)="experience('Mid')">
+                <div class="card-body text-center my-3"> <img class="img-fluid" width="90px" src="assets/img/svg/worker.svg">
+                  <div class="card-block  text-center">
+                    <h4 class="card-title">{{dashboard.Senior | translate}}</h4>
+                    <p> {{dashboard.name4 | translate}} {{dashboard.Years | translate}} </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- .// experience('Mid') --> 
+            <!--   experience('Senior') -->
+            <div class="col col-md-4 col-sm-12 col-lg-4">
+              <div class="border border-2   bg-white card" (click)="experience('Senior')">
+                <div class="card-body text-center my-3"> <img class="img-fluid mb-2" width="90px" src="assets/img/svg/manager.svg">
+                  <div class="card-block  text-center">
+                    <h4 class="card-title">{{dashboard.Executive| translate}}</h4>
+                    <p> {{dashboard.name5 | translate}} {{dashboard.Years | translate}} </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Cover letter Content -->
+      <div *ngIf="!showCoverLetterContent">
+        <form #coverLetterForm="ngForm" (ngSubmit)="coverLetterForm.valid && nextCvrLtr(coverLetterForm)">
+        <div class="row" *ngFor="let dashboard of dashboardItems">
+        <div class="col-md-6 col-sm-12 offset-md-3 offset-lg-3">
+        <form #coverLetterForm="ngForm" (ngSubmit)="coverLetterForm.valid && nextCvrLtr(coverLetterForm)">
+          <div class="d-block text-center mt-4">
+            <h4 class="head-wLine"> <span> {{dashboard.CoverLetterName | translate}}</span> </h4>
+            <!-- <p> {{dashboard.Awellcomposedresumecan | translate}} {{dashboard.literallychange | translate}} {{dashboard.yourlife |translate}} </p> -->
+          </div>
+          <div class="form-body">
+            <div class="form-group">
+              <label for="resName">{{dashboard.CoverLetterName | translate}}</label>
+              <input class="form-control" id="resName" type="text" name="meta" [(ngModel)]="meta" placeholder="ex: Resume-Marketing" required>
+            </div>
+          </div>
+          <div class="form-actions center">
+            <button class="btn btn-raised btn-primary px-3" [disabled]="!coverLetterForm.form.valid"> <i class="fa fa-arrow-right8"></i> {{dashboard.LetsStart | translate}} </button>
+          </div>
+        </form>
+      </div>
+      </div>
+      </form>
+      </div>
+      <!-- cover letter language -->
+      <div *ngIf="!showCoverLetterLanguage">
+        <div class="row" *ngFor="let dashboard of dashboardItems">
+          <div class="col-md-6 col-sm-12 offset-md-3 offset-lg-3">
+            <div class="d-block text-center mt-4">
+              <h4 class="head-wLine"> <span>{{dashboard.Resumelanguage | translate}}</span> </h4>
+              <p>{{dashboard.Selecttextdirection | translate}} </p>
+            </div>
+            <div class="d-block text-center mt-4">
+              <div class="row">
+                <div (click)="cvrLtrlanguage('English')" class="col-md-5 offset-lg-1 offset-md-1 col-sm-12 col-5 fonticon-container border border-1 py-2  bg-white">
+                  <label class="fonticon-classname">English Cover Letter</label>
+                  <div class="fonticon-wrap d-block float-none text-center w-100"> <i class="fa  fa-paragraph-left3"></i> </div>
+                  <label class="fonticon-unit"> <em class="info">Left Direction <br>
+                    (applicable for cover letters in all languages)</em> </label>
+                </div>
+                <div (click)="cvrLtrlanguage('Arabic')" class="col-md-5 offset-lg-1 offset-md-1 col-sm-12 col-5 fonticon-container border border-1 py-2  bg-white">
+                  <label class="fonticon-classname">رسالة تعريفية عربية</label>
+                  <div class="fonticon-wrap d-block float-none text-center w-100"> <i class="fa  fa-paragraph-right3"></i> </div>
+                  <label class="fonticon-unit"> <em class="info"> Right Direction</em> </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      

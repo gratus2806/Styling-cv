@@ -1,0 +1,138 @@
+ 
+<div class="card mt-4 card-signup" >
+    <div *ngFor="let signup of signupItems">
+        <div class="card-body">
+            <div class="card-block">
+                <div class="row d-flex">
+                    <div class="col-12 col-sm-12 col-md-7">
+
+                        <h3 class="card-title font-medium-1 text-center mt-3">
+                            <span>{{signup.Creatingaresumehasneverbeen |translate }}  <strong class="freeLbb">{{signup.Easier | translate}}</strong></span>
+
+                        </h3>
+                        <h6 class=" text-center mt-1">
+                            {{signup.CreateyourFREEaccount |translate}}
+
+
+                        </h6>
+
+                        <div class="row mt-4">
+                            <div class="col-6 col-lg-4 col-md-4 mb-3 text-center">
+                                <i class="icon icon-trophy font-large-1 primary"></i><br>
+                                <span class="text-bold-500"> {{signup.Professional |translate}}</span> <br> {{signup.Resume | translate}}
+
+                            </div>
+                            <div class="col-6 col-lg-4 col-md-4 mb-3 text-center">
+                                <i class="icon icon-docs font-large-1 primary"></i><br>
+                                <span class="text-bold-500">  {{signup.Free | translate}} 
+                                    </span> <br> {{signup.Resumes | translate}}
+                            </div>
+                            <div class="col-6 col-lg-4 col-md-4 mb-3 text-center">
+                                <i class="icon icon-globe-alt font-large-1 primary"></i><br>
+                                <span class="text-bold-500">{{signup.Multilingual |translate}} 
+
+                                    </span> <br> {{signup.Resumes |translate}}
+
+                            </div>
+
+
+                            <div class="col-6 col-lg-4 col-md-4 mb-3 text-center">
+                                <i class="icon icon-layers font-large-1 primary"></i><br>
+                                <span class="text-bold-500">  {{signup.Templates |translate}} 
+                                        </span> <br> {{signup.Design | translate}}
+
+
+                            </div>
+                            <div class="col-6 col-lg-4 col-md-4 mb-3 text-center">
+                                <i class="icon icon-note font-large-1 primary"></i><br>
+                                <span class="text-bold-500">  {{signup.Unlimited | translate}} 
+                                        </span> <br> {{signup.Entries |translate}}
+
+                            </div>
+                            <div class="col-6 col-lg-4 col-md-4 mb-3 text-center">
+                                <i class="icon icon-cloud-download font-large-1 primary"></i><br>
+                                <span class="text-bold-500">{{signup.Unlimited |translate}}
+                                        </span> <br> {{signup.PDFDownloads | translate}}
+
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 text-center">
+                                <img class="fit" src="assets/img/photos/builder-view-min.jpg" alt="">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-5 bg-grey bg-lighten-4 align-items-center p-4">
+                        <h6 class="blue-grey text-center head-wLine">
+                            <span>
+                        {{signup.Create | translate}} <em class="text-bold-500">{{signup.FreeAccount | translate}}  </em>
+                    </span>
+
+                        </h6>
+
+                        <form (ngSubmit)="f.valid && onSubmit(f)" #f="ngForm" class=" w-100">
+
+                            <div class="row mt-3">
+                                <div class="col"> <a class="btn btn-social btn-min-width w-100 text-center   mb-2 btn-google" (click)="googlelogin()"><span class="fa fa-google"></span> Google</a></div>
+                                <div class="col"><a class="btn btn-social btn-min-width  w-100 text-center   mb-2 btn-facebook" (click)="facebooklogin()"><span class="fa fa-facebook"></span> Facebook</a></div>
+                                <div class="w-100"></div>
+                                <div class="col"><a class="btn btn-social btn-min-width  w-100 text-center  mb-2 btn-linkedin" (click)="linkedinlogin()"><span class="fa fa-linkedin"></span> LinkedIn</a></div>
+                                <div class="col"><a class="btn btn-social btn-min-width  w-100 text-center  mb-2 btn-twitter" (click)="twitterlogin()"><span class="fa fa-twitter"></span> Twitter</a></div>
+                            </div>
+
+
+
+                            <h6 class="blue-grey mt-3 text-center head-wLine"> 
+                                <span>
+                            {{signup.or | translate}} <em class="text-bold-500">{{signup.Signinwith | translate}}   </em>
+                        </span>
+                            </h6>
+
+                            <div class="input-group mb-2">
+                                <input type="text" #firstName="ngModel" class="form-control" [(ngModel)]="userService.selectedUser.firstName" name="firstName" placeholder="{{signup.FirstName |translate}}" [ngClass]="{'invalid-textbox' :f.submitted && !firstName.valid }">
+                            </div>
+                            <div class="input-group mb-2">
+
+                                <input type="text" #lastName="ngModel" class="form-control" [(ngModel)]="userService.selectedUser.lastName" name="lastName" placeholder="{{signup.LastName | translate}}" [ngClass]="{'invalid-textbox' :f.submitted && !lastName.valid }">
+                            </div>
+                            <div class="input-group mb-2">
+                                <input type="text" #email="ngModel" class="form-control" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="{{signup.Email |translate}}" required [pattern]="emailRegex" [ngClass]="{'invalid-textbox' :f.submitted && !email.valid }">
+                            </div>
+                            <div class="input-group mb-2">
+                                <input type="password" class="form-control" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="{{signup.Password | translate}}" minlength="4" required [ngClass]="{'invalid-textbox' :f.submitted && !password.valid }" placement="top" ngbTooltip="minimum 6 characters">
+                                <div *ngIf="f.submitted && password.errors">
+                                    <label *ngIf="password.errors.required" class="validation-message">{{signup.Thisfieldisrequired | translate}}</label>
+                                    <label *ngIf="password.errors.minlength" class="validation-message">{{signup.Enteratleast4characters | translate}}</label>
+                                </div>
+
+
+                            </div>
+
+                            <div class="form-group text-center">
+
+                                <button type="submit" class="btn btn-raised mt-2 w-100  btn-lgg  btn-primary" [disabled]="!f.valid">{{signup.StartCreatingMyResume |translate}}</button>
+                            </div>
+
+
+                            <div class="col-12 center ">
+                                <p class="text-center grey mt-2 font-weight-light">
+                                    {{signup.Haveanaccount| translate}}
+                                    <a href="!#" routerLink="/login">{{signup.Login| translate}}</a>
+
+                                </p>
+                            </div>
+
+                   
+
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

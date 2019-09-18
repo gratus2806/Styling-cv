@@ -1,0 +1,143 @@
+<!-- <div class="registrationBG bg-cover full-height-vh"> -->
+        <div class="registrationBG bg-cover full-height-vh"  [dir]="textDir">
+                <link href="https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css"  *ngIf="preferred_language==='ar'" rel="stylesheet">
+ 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 d-flex"> 
+                <!-- nav bar -->
+
+                <nav class="header-navbar navbar navbar-expand-lg navbar-light bg-faded position-absolute">
+                    <div class="container ">
+                        <div class="navbar-header2">
+                            <div class="position-relative has-icon-right">
+                                <img src="assets/img/logos/StylingCV-logo-en-dark.svg" class="appLogo" alt="">
+                            </div>
+
+
+                        </div>
+                        <div class="navbar-container">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed" *ngFor="let user of userItems">
+                                <ul class="navbar-nav" *ngFor="let user of userItems">
+                                    <li>
+                                        <a class="nav-link d-flex" routerLink="/login">
+                                            <i class="mr-1 d-inline" style="width:33px">
+                                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 25 25" style="enable-background:new 0 0 25 25;" xml:space="preserve">
+                                               <style type="text/css">
+                                                   .st0{fill:#101010;}
+                                               </style>
+                                               <path class="st0" d="M19.8,3.8c-0.1,0-0.2,0-0.3-0.1C17.2,2.5,15.2,2,12.8,2C10.4,2,8.1,2.6,6,3.7c-0.3,0.2-0.7,0-0.8-0.2
+                                                   c-0.2-0.3,0-0.7,0.2-0.8c2.2-1.2,4.7-1.8,7.3-1.8c2.6,0,4.8,0.6,7.3,1.8c0.3,0.2,0.4,0.5,0.3,0.8C20.2,3.7,20,3.8,19.8,3.8z
+                                                    M2.5,10.1c-0.1,0-0.2,0-0.3-0.1C1.9,9.8,1.8,9.4,2,9.2c1.2-1.7,2.7-3,4.5-3.9c3.8-2,8.6-2,12.4,0c1.8,0.9,3.3,2.2,4.5,3.9
+                                                   c0.2,0.3,0.1,0.7-0.1,0.8c-0.3,0.2-0.6,0.1-0.8-0.1c-1.1-1.5-2.5-2.7-4.1-3.5c-3.5-1.8-7.9-1.8-11.3,0c-1.6,0.8-3,2-4.1,3.6
+                                                   C2.9,10,2.7,10.1,2.5,10.1z M10,24.7c-0.2,0-0.3-0.1-0.4-0.2c-1-1-1.6-1.7-2.4-3.2c-0.8-1.5-1.3-3.3-1.3-5.2c0-3.6,3.1-6.5,6.8-6.5
+                                                   c3.8,0,6.8,2.9,6.8,6.5c0,0.3-0.3,0.6-0.6,0.6c-0.3,0-0.6-0.3-0.6-0.6c0-2.9-2.5-5.3-5.6-5.3c-3.1,0-5.6,2.4-5.6,5.3
+                                                   c0,1.7,0.4,3.3,1.1,4.6c0.8,1.4,1.3,2,2.2,2.9c0.2,0.2,0.2,0.6,0,0.9C10.3,24.6,10.2,24.7,10,24.7z M18.7,22.4
+                                                   c-1.4,0-2.7-0.4-3.7-1.1c-1.8-1.2-2.9-3.2-2.9-5.3c0-0.3,0.3-0.6,0.6-0.6c0.3,0,0.6,0.3,0.6,0.6c0,1.7,0.9,3.3,2.3,4.3
+                                                   c0.9,0.6,1.9,0.9,3.1,0.9c0.3,0,0.8,0,1.3-0.1c0.3-0.1,0.6,0.2,0.7,0.5c0.1,0.3-0.2,0.6-0.5,0.7C19.5,22.4,18.8,22.4,18.7,22.4z
+                                                    M16.3,24.9c0,0-0.1,0-0.2,0c-1.9-0.5-3.2-1.2-4.5-2.5C9.9,20.7,9,18.4,9,16.1c0-2,1.7-3.5,3.7-3.5c2,0,3.7,1.6,3.7,3.5
+                                                   c0,1.3,1.1,2.3,2.5,2.3c1.4,0,2.5-1,2.5-2.3c0-4.5-3.9-8.2-8.7-8.2c-3.4,0-6.6,1.9-8,4.9c-0.5,1-0.7,2.1-0.7,3.4
+                                                   c0,0.9,0.1,2.4,0.8,4.4c0.1,0.3,0,0.7-0.3,0.8c-0.3,0.1-0.7,0-0.8-0.3c-0.6-1.6-0.9-3.1-0.9-4.8c0-1.4,0.3-2.8,0.8-3.9
+                                                   c1.6-3.4,5.2-5.5,9.1-5.5c5.5,0,9.9,4.2,9.9,9.4c0,2-1.7,3.5-3.7,3.5c-2,0-3.7-1.6-3.7-3.5c0-1.3-1.1-2.3-2.5-2.3
+                                                   c-1.4,0-2.5,1-2.5,2.3c0,2.1,0.8,4,2.3,5.4c1.1,1.1,2.2,1.8,3.9,2.2c0.3,0.1,0.5,0.4,0.4,0.7C16.8,24.7,16.5,24.9,16.3,24.9z"/>
+                                               </svg>
+                                               
+                                            </i>
+                                            <!-- <i class="icon-user-follow mr-1  font-medium-2 blue-grey darken-4"></i> -->
+                                            <p class="d-inline-block">{{user.LogIn | translate}}</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" routerLink="/signup">
+                                            <i class="icon-user-follow mr-1 font-medium-2 blue-grey darken-4"></i>
+                                            <p class="d-inline-block">{{user.SignUp | translate}}</p>
+                                        </a>
+                                    </li>
+
+
+                                    <!-- <li class="nav-item position-relative" ngbDropdown [placement]="placement">
+                                        <a class="nav-link" id="dropdownLang" ngbDropdownToggle>
+
+                                            <i class=""><img src="./assets/img/flags/us.png" alt="English" class="langimg"></i> -->
+                                    <li class="nav-item position-relative" ngbDropdown>
+                                            <a class="nav-link position-relative" id="dropdownLang" ngbDropdownToggle>
+                                                    <img *ngIf="preferred_language==='en'"  src="./assets/img/flags/us.png" alt="English" class="langimg">
+                                                    <img *ngIf="preferred_language==='es'"  src="./assets/img/flags/es.png" alt="Spanish" class="langimg">
+                                                    <img *ngIf="preferred_language==='pt'"  src="./assets/img/flags/br.png" alt="Portuguese" class="langimg">
+                                                    <img *ngIf="preferred_language==='de'"  src="./assets/img/flags/de.png" alt="German" class="langimg">
+                                                    <img *ngIf="preferred_language==='ar'"  src="./assets/img/flags/ar.png" alt="عربي" class="langimg">
+                                                    <!-- <i class="ft-flag font-medium-3 blue-grey darken-4"></i> -->
+                                                <p class="d-none">Language</p>
+                                            </a>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownLang" class="dropdownLang text-left">
+                                            <a class="dropdown-item py-1 lang" href="javascript:;" (click)="ChangeLanguage('en')">
+                                                <img src="./assets/img/flags/us.png" alt="English" class="langimg">
+                                                <span>English</span>
+                                            </a>
+                                            <a class="dropdown-item py-1 lang" href="javascript:;" (click)="ChangeLanguage('es')">
+                                                <img src="./assets/img/flags/es.png" alt="Spanish" class="langimg">
+                                                <span>Spanish</span>
+                                            </a>
+                                            <a class="dropdown-item py-1 lang" href="javascript:;" (click)="ChangeLanguage('pt')">
+                                                <img src="./assets/img/flags/br.png" alt="Portuguese" class="langimg">
+                                                <span>Portuguese</span>
+                                            </a>
+                                            <a class="dropdown-item py-1 lang" href="javascript:;" (click)="ChangeLanguage('de')">
+                                                <img src="./assets/img/flags/de.png" alt="German" class="langimg">
+                                                <span>German</span>
+                                            </a>
+                                            <a class="dropdown-item py-1 lang" href="javascript:;" (click)="ChangeLanguage('ar')">
+                                                <img src="./assets/img/flags/ar.png" alt="عربي" class="langimg">
+                                                <span>عربى</span>
+                                            </a>
+                                        </div>
+                                    </li>
+
+
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+
+                <!-- nav bar -->
+            </div>
+        </div>
+        <div class="container ">
+            <div class="row">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <div id="formContent" class="w-100">
+                        <router-outlet></router-outlet>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container ">
+            <div class="row">
+                <div class="col-12">
+                    <footer class="footer p-0">
+                        <div class="container">
+
+                            <div class="copyright  text-center text-capitalize"> © 2019, made with <i class="fa fa-heart5 danger"></i> for better Resumes. </div>
+                        </div>
+
+
+
+
+
+                        <p class="text-center grey font-small-1">
+                            <input type="checkbox" name="newaccount_terms" checked="" style="display:none">
+                            <span>By using StylingCV's, you are agreeing to our</span> <a href="https://stylingcv.com/en/terms/" target="_blank"> Terms of Service</a>
+                        </p>
+
+
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>

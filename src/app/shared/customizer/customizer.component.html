@@ -1,0 +1,256 @@
+<!--Theme customizer Starts-->
+
+<div class="customizer border-left-blue-grey border-left-lighten-4 d-none d-sm-none d-md-block open"> <a class="customizer-close"> <i class="ft-x font-medium-3"></i> </a>
+     <a class="customizer-toggle bg-danger d-flex  flex-row" id="customizer-toggle-icon"> 
+         <!-- <i class="font-medium-4 fa fa-design white align-middle"></i> -->
+         <i   class="ft-settings font-medium-4 fa   white align-middle spinner"></i>
+         
+         <span> {{'Resume Customizer' | translate}}  </span>
+         <!-- <i   class="ft-settings font-medium-4 fa   white align-middle spinner"></i> -->
+         </a>
+    <perfect-scrollbar style="max-width: 600px" [config]="scrollbarConfig"> 
+      
+      <!-- <div>Scrollable content</div> -->
+      
+      <div class="customizer-content p-3 ps-container ps-theme-dark text-left">
+        <h4 class="text-uppercase mb-1 text-bold-400">
+            {{'Resume Customizer' | translate}}  
+    
+        </h4>
+        <p>
+            {{'Customize & Preview in Real Time' | translate}} 
+        </p>
+        <div class="text-center my-3">
+
+          
+          <button  (click)="backToEditor()" class="btn btn-outline-success mr-1 btn-fab" *ngIf="checkEditor"> <i class="ft-download-cloud"></i> 
+            BACK TO EDITOR
+              <!-- {{'Download' | translate}}   -->
+          </button>
+
+          <button (click)="download()" class="btn btn-outline-success mr-1 btn-fab"> <i class="ft-download-cloud"></i> 
+                 
+                 {{'Download' | translate}}  
+          </button>
+          <button (click)="arrangeSections()" class="btn btn-outline-info btn-fab"> <i class="ft-repeat"></i>
+                
+                {{'arrange sections' | translate}}  
+            </button>
+
+          <li *ngIf="userDetails.role==='USER'">
+              <a href="#" class="menu-item">
+                       Upgrade
+              </a>
+        </li>
+
+        <li *ngIf="userDetails.role==='OPS'">
+              <a href="#" class="menu-item">
+                Premium Account Active
+              </a>
+        </li>
+
+        
+        </div>
+        <h6 class="text-center text-bold-500 mb-3 text-uppercase  head-wLine"> 
+          <span> 
+              {{'Template Used' | translate}}
+            
+           
+        </span> 
+        </h6>
+        <div class="resume-currenct-template">
+          <div class="media"> <a> <img  class="media-object d-flex mr-3 round-media" src="assets/img/templates/{{resumeMeta.defaultTemplate.slug}}/img/preview-min.jpg" style="width: 80px;height: 80px;"> </a>
+            <div  class="media-body">
+              <h4 class="media-heading">
+                {{resumeMeta.defaultTemplate.name}} 
+              </h4> 
+                 <p>
+                    {{resumeMeta.ResumeLanguage}}
+                </p>
+              <button (click)="changeResumeTemplate()" class="btn btn-primary mr-1 btn-raised mr-1 btn-sm"> 
+                <i class="ft-copy"></i> 
+                {{'Change Template' | translate}}
+                 
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!--Sidebar Options Starts-->
+        
+        <h6 class="text-center text-bold-500 mb-3 text-uppercase  head-wLine mt-3"> 
+          <span> {{'Resume Color Options' | translate}} </span> 
+        </h6>
+        <div class="cz-bg-color">
+          <div class="row p-1">
+            <div class="col"  *ngFor="let color of colorsArray; let ndx = index"> <span [ngClass]="{'selected': colorSelected===color.name}" class="d-block rounded-circle" [attr.data-bg-color]="color.name" [attr.data-main-color]="color.name" (click)="changeColour(color.name)"> <em></em> </span> </div>
+
+        
+          </div>
+        </div>
+        
+        <!--Sidebar Options Ends--> 
+        
+        <!--Sidebar BG Image Starts-->
+        
+        <h6 class="text-center text-bold-500 mb-3 text-uppercase  head-wLine"> 
+          <span> {{'Resume Background' | translate}} </span> 
+        </h6>
+      
+<div class="cz-bg-image row">
+    <ng-container>
+    <div class="col mb-3" *ngFor="let background of backgroundsArray | slice:0:6">
+       <img src="assets/img/sidebar-resume-bg/{{background.name}}.png" class="rounded" width="155" [ngClass]="{'selected': bgSelected=== background.bg}" (click)="changeBackground(background.bg)">
+      </div>
+
+      
+      <h6 *ngIf="!showMore" class="text-center mb-1 w-100 mx-2 text-primary font-small-2"   (click)="showMore = true">
+          <i class="ft-chevron-down"></i>
+        <span> {{'More Backgrounds' | translate}}</span> </h6>
+
+    </ng-container>
+
+    <ng-container  *ngIf="showMore">
+        <ng-container  *ngFor="let background of backgroundsArray; let ndx = index">
+
+            <div class="col mb-3" *ngIf="ndx >= 6">
+                <img src="assets/img/sidebar-resume-bg/{{background.name}}.png" class="rounded" width="155" [ngClass]="{'selected': bgSelected=== background.bg}" (click)="changeBackground(background.bg)">
+              </div>
+        </ng-container>
+        <h6 class="text-center mb-1 w-100 mx-2 text-primary font-small-2"  (click)="showMore = false">
+          <i class="ft-chevron-up"></i>
+          <span> {{'Less Backgrounds' | translate}}</span> 
+          </h6>
+      </ng-container>
+
+
+
+
+    
+  </div>
+  
+        
+     
+        
+        <!--Sidebar BG Image Ends--> 
+        
+        <!-- sidebar font starts -->
+        
+        <h6 class="text-center text-bold-500 my-3 text-uppercase head-wLine"> 
+          <span>{{'Resume Layout' | translate}}</span> 
+        </h6>
+        <div class="">
+          <div class="btn-group-toggle row mx-2 borderRadio" ngbRadioGroup name="resumeChannel" [(ngModel)]="resumeChannel">
+            <label ngbButtonLabel class="col-6 mb-2 text-center" [ngClass]="{'active': channelSelected===''}">
+            <input ngbButton  type="radio" [value]="" (click)="changeResumeChannel('')">
+            <img src="assets/img/svg/twoChannels.svg" width="33px" class="mt-1" alt="">
+            <h6 class="mt-2">{{'Two Channels' | translate}}</h6>
+            </label>
+            <label ngbButtonLabel class="col-6 mb-2 text-center" [ngClass]="{'active': channelSelected==='one'}">
+            <input ngbButton type="radio" [value]="true" (click)="changeResumeChannel('one')">
+            <img src="assets/img/svg/oneChannel.svg" width="33px" class="mt-1" alt="">
+            <h6 class="mt-2">{{'One Channel'  | translate}}</h6>
+            </label>
+          </div>
+        </div>
+        
+        <!-- sidebar font Ends --> 
+        
+        <!-- sidebar font starts -->
+        
+        <h6 class="text-center text-bold-500 my-3 text-uppercase   head-wLine"> <span>{{'Font Family' | translate}}</span> </h6>
+        <div class="">
+            
+            <!-- english font  -->
+            <div   *ngIf="check_resumeLang">
+          <div class="btn-group-toggle row mx-2 borderRadio" ngbRadioGroup  name="resumeFont" [(ngModel)]="resumeFont"   >
+
+
+              <ng-container  *ngFor="let englishfont of EnglishfontArray | slice:0:5">
+                  
+
+                      <label ngbButtonLabel class="col-12 mb-2 text-center"   [ngClass]="{'active': fontSelected===englishfont.name}">
+                          <input ngbButton type="radio" value="{{englishfont.name}}" (click)="changeFontFamily(englishfont.name)">
+                          <img src="assets/img/svg/english-font-svg/{{englishfont.img}}" height="30px" alt=""> 
+                        </label>
+                  </ng-container>
+
+                  <h6 *ngIf="!showMoreFont" class="text-center mb-1 w-100 mx-2 text-primary font-small-2"   (click)="showMoreFont = true">
+                      <i class="ft-chevron-down"></i>
+                      <span> {{'More Fonts'  | translate}}</span> 
+                     </h6>
+                  <ng-container  *ngIf="showMoreFont">
+                  <ng-container  *ngFor="let englishfont of EnglishfontArray; let ndx = index">
+                  
+
+                      <label *ngIf="ndx >= 5" ngbButtonLabel class="col-12 mb-2 text-center"   [ngClass]="{'active': fontSelected===englishfont.name}">
+                          <input ngbButton type="radio" value="{{englishfont.name}}" (click)="changeFontFamily(englishfont.name)">
+                          <img src="assets/img/svg/english-font-svg/{{englishfont.img}}" height="30px" alt=""> 
+                        </label>
+
+                  </ng-container>
+                  <h6 class="text-center mb-1 w-100 mx-2 text-primary font-small-2"  (click)="showMoreFont = false"> 
+                      <i class="ft-chevron-up"></i>
+                    <span> {{'Less Fonts'  | translate}}</span> 
+                  </h6>
+
+                </ng-container>
+
+
+            </div>
+          </div>
+        </div>
+            <!-- //english font  -->
+
+
+          <div *ngIf="!check_resumeLang">
+
+            <!-- arabic font  -->
+            <div class="btn-group-toggle row mx-2 borderRadio" ngbRadioGroup  name="resumeFont" [(ngModel)]="resumeFont"   >
+                    <label ngbButtonLabel class="col-12 mb-2 text-center"   [ngClass]="{'active': fontSelected==='CormorantGaramond'}">
+                      <input ngbButton type="radio" value="CormorantGaramond" (click)="changeFontFamily('CormorantGaramond')">
+                      <img src="assets/img/svg/english-font-svg/Cormorant Garamond.svg" height="30px" alt=""> </label>
+                     <label ngbButtonLabel class="col-12 mb-2 text-center"   [ngClass]="{'active': fontSelected==='Lora'}">
+                      <input ngbButton type="radio" value="Lora" (click)="changeFontFamily('Lora')">
+                      <img src="assets/img/svg/english-font-svg/Lora.svg" height="30px" alt=""> </label>
+                  
+                  </div>              <!--// arabic font  -->
+          </div>
+        
+        
+        <!-- sidebar font Ends --> 
+        
+        <!-- sidebar font size starts -->
+         
+        <h6 class="text-center text-bold-500 my-3 text-uppercase   head-wLine"> <span> {{'Font Size' | translate}} </span> </h6>
+        <div class="row">
+          <div class="col-12 mt-3"> 
+              <ng5-slider [(value)]="fontsizeSelected" [options]="optionFonts" (userChangeEnd)="changeFontSize($event)" (userChangeStart)="onUserChangeStart($event)" (userChange)="onUserChange($event)"></ng5-slider>
+          </div>
+        </div>
+        
+        <!-- sidebar font size  Ends --> 
+        
+ 
+   <br><br>
+        
+        <!--RTL Starts-->
+        
+        <!-- <div class="togglebutton">
+          <div> <span>RTL</span>
+            <div class="float-right">
+              <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                <input type="checkbox" [checked]="options.direction == 'rtl' ? 'checked' : false" class="custom-control-input cz-rtl" id="cz-rtl" (change)="options.direction = (options.direction == 'rtl' ? 'ltr' : 'rtl'); sendOptions()">
+                <label class="custom-control-label" for="cz-rtl"></label>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        
+        <!--RTL Ends-->
+       
+      </div>
+    </perfect-scrollbar>
+  </div>
+  
+  <!--Theme customizer Ends-->

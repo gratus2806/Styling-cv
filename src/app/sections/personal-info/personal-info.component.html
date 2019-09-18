@@ -1,0 +1,168 @@
+<div class="row ">
+
+    <div class="col-12">
+        <div class="content-header">Let’s start with your header</div>
+        <p class="content-sub-header">Include your 1st and last name and at least one way for employers to reach you</p>
+    </div>
+
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="px-3">
+                    <form #editForm="ngForm" (ngSubmit)="onEditSubmit(editForm)" class=" w-100">
+                        <div class="form-body">
+                            <h4 class="form-section"><i class="ft-user"></i> Personal Info </h4>
+
+
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="align-self-center text-center">
+
+                                        <a class="profile-image">
+                                           <img alt="Card image" class="rounded-circle img-border media-bordered border gradient-summer width-150" src="{{logoUrl}}">
+                                        </a>  
+
+                                            <img [(src)]="data.image" [width]="cropperSettings.croppedWidth"
+                                                [height]="cropperSettings.croppedHeight" class="img-border media-bordered border gradient-summer width-150 height-150" ([ngModel])="data.image" name="image" />
+
+                                            <div class="file-upload">
+                                                <span class="text">upload</span>
+                                                <input id="custom-input" type="file" (change)="fileChangeListener($event)" />
+                                            </div>
+                                            <img-cropper #cropper [image]="data" [settings]="cropperSettings" (imageCropped)="imageCropped($event)" ></img-cropper>
+                                            
+                                    </div>
+                                    <div class="text-center mt-1">
+                                        <button class="btn btn-raised mr-1 btn-primary btn-sm">
+                                            <i class="fa fa-upload4 left mx-1"></i> Add Photo</button>
+                                          
+                                            <button class="btn btn-raised mr-1 btn-primary btn-sm" (click) = "saveLogo()">
+                                                    <i class="fa fa-upload4 left mx-1"></i>
+                                                     Save
+                                            </button>
+                                        <button class="btn btn-raised btn-danger btn-sm" placement="top" ngbTooltip="Remove">
+                                            <i class="ft-x"></i>
+                                        </button>
+                                    </div>
+
+                                </div> 
+                                <div class="col-12 text-center mt-2">
+                                    <span class="font-medium-2 text-uppercase">
+                                          {{personalInfoArray?.aboutSection.firstName}} {{personalInfoArray?.aboutSection.lastName}}  
+                                        </span>
+                                    <p class="grey font-small-3">{{personalInfoArray?.aboutSection.currentPosition}}</p>
+
+
+
+                                </div>
+                            </div>
+
+                            <!-- personal -->
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-6  col-md-6">
+                                    <!-- <h6>{{resumeIdArray | json}}</h6> -->
+                                    <!-- <h6>{{resumeIdArray.aboutSection.firstName | json}}</h6> -->
+                                    <label for="1stname" class="sr-only">First Name</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input class="form-control" [(ngModel)]="personalInfoArray?.aboutSection.firstName" (ngModelChange)="personalChange($event)" placeholder="First Name" name="firstName">
+                                        <div class="form-control-position"> <i class="ft-user"></i> </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 col-lg-6  col-md-6">
+                                    <label for="2ndname" class="sr-only">Last Name</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input class="form-control" [(ngModel)]="personalInfoArray?.aboutSection.lastName" (ngModelChange)="personalChange($event)" placeholder="Last Name" name="lastName">
+                                        <div class="form-control-position"> <i class="ft-users"></i> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-6  col-md-6">
+                                    <label for="title" class="sr-only">Professional Title</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input class="form-control" [(ngModel)]="personalInfoArray?.aboutSection.currentPosition" (ngModelChange)="personalChange($event)" placeholder="e.g. Business Development Manager" name="currentPosition">
+                                        <div class="form-control-position"> <i class="ft-briefcase"></i> </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 col-lg-6  col-md-6">
+                                    <label for="email" class="sr-only">Email Address </label>
+                                    <div class="position-relative has-icon-left">
+                                        <!-- <input class="form-control" [(ngModel)]="resumeIdArray?.email" readonly name="email" type="email"> -->
+                                        <input class="form-control" [(ngModel)]="personalInfoArray?.email!" (ngModelChange)="personalChange($event)" readonly  name="email">
+                                        <div class="form-control-position"> <i class="ft-mail"></i> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //personal -->
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-4  col-md-4"  placement="top" ngbTooltip="optional">
+                                    <label for="Nationality" class="sr-only" >Nationality</label>
+                                   
+                                    <div class="position-relative has-icon-left">
+                                        <input class="form-control" [(ngModel)]="personalInfoArray?.aboutSection.Nationality" placeholder="Nationality" (ngModelChange)="personalChange($event)" name="Nationality" type="text">
+                                        <div class="form-control-position"> <i class="ft-globe"></i> </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 col-lg-4  col-md-4"  placement="top" ngbTooltip="optional">
+                                    <label for="DOB" class="sr-only">Date of Birthday</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input class="form-control" [(ngModel)]="personalInfoArray?.aboutSection.DOB" name="DOB" type="text" (ngModelChange)="personalChange($event)" placeholder="Date of Birthday">
+                                        <div class="form-control-position"> <i class="ft-calendar"></i> </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 col-lg-4  col-md-4"  placement="top" ngbTooltip="optional">
+                                    <label for="maritalStatus" class="sr-only">Marital Status</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input class="form-control" [(ngModel)]="personalInfoArray?.aboutSection.maritalStatus" (ngModelChange)="personalChange($event)" placeholder="Marital Status" name="maritalStatus" type="text">
+                                        <div class="form-control-position"> <i class="fa fa-man-woman"></i> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 class="form-section"><i class="ft-user"></i> Contact Infomation</h4>
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-6  col-md-6">
+                                    <label for="phone" class="sr-only">Phone Number</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input class="form-control" [(ngModel)]="personalInfoArray?.aboutSection.contacts[1].value" (ngModelChange)="personalChange($event)" placeholder="+0 123 456 7891" name="phone">
+                                        <div class="form-control-position"> <i class="ft-phone"></i> </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 col-lg-6  col-md-6">
+                                    <label for="Address" class="sr-only">Address</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input class="form-control" [(ngModel)]="personalInfoArray?.aboutSection.contacts[2].value" (ngModelChange)="personalChange($event)" placeholder="e.g. Seattle WA 98104, USA" name="location">
+                                        <div class="form-control-position"> <i class="ft-map-pin"></i> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-6  col-md-6" placement="top" ngbTooltip="optional" >
+                                    <div class="input-group">
+                                        <div class="input-group-append"> <span class="input-group-text" id="twitter"><i class="ft-twitter mr-1"></i>  twitter.com/</span> </div>
+                                        <input class="form-control"   [(ngModel)]="personalInfoArray?.aboutSection.contacts[4].value" (ngModelChange)="personalChange($event)" placeholder="e.g. stylingcv" name="twitter">
+                                       
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 col-lg-6  col-md-6"  placement="top" ngbTooltip="optional">
+                                    <div class="input-group">
+                                        <div class="input-group-append" placement="top" ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popoverTitle="Popover on top"> <span class="input-group-text" id="facebook"><i class="ft-facebook mr-1"></i> facebook.com/</span> </div>
+                                        <!-- <input class="form-control" placeholder="@username" type="text"> -->
+                                        <input class="form-control" [(ngModel)]="personalInfoArray?.aboutSection.contacts[3].value" (ngModelChange)="personalChange($event)" placeholder="e.g. stylingcv" name="facebook">
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+
+  <div class="modal-header">
+    <h4 class="modal-title">Section Title & Icon </h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <i class="ft-x font-medium-3"></i>
+    </button>
+</div>
+<div class="modal-body">
+
+
+
+
+      <div  class="form-body">
+               <div  class="row">
+                <div  class="col-md-12">
+                  <div  class="form-group">
+                    <label  for="secName">Section Name</label>
+                    <input  class="form-control"  id="secName" name="secName" [(ngModel)]="sectionname" (ngModelChange)="sectionrename($event)" placeholder="name">
+
+                   </div>
+                </div>
+                
+              </div>
+              
+              <h4  class="form-section col-md-12 my-2"><i  class="{{sectionicon}}"></i> {{sectionname}}</h4>
+              <div  class="form-group col-md-12">
+               
+                
+                <div style="height:355px; overflow: auto;">
+               
+                       <div class="row">
+                          <div class="col" *ngFor="let iconsArray of iconsArray">
+                            <div class="border border-primary m-1 p-2 btn text-center  bg-grey bg-lighten-3 font-medium-4">
+                              <i [ngClass]="[iconsArray]" style="font-size:39px" (click)="iconschangeFunction(id,iconsArray,sectionArray,resumeIdArray)"></i>
+                            </div>
+                          </div>
+                      </div>
+                </div>
+
+
+
+              </div>
+               
+             
+              
+            </div>
+
+            
+
+
+     
+
+  
+
+    <!-- <a class="btn  mr-1 btn-raised  btn-info" (click)="savesection(icon,sectionname,id,sectionArray,resumeIdArray)"> <i class="fa fa-add-to-list mr-1"></i> Save
+        </a> -->
+</div>
+<div class="modal-footer">
+    <a class="btn  mr-1 btn-raised  btn-info" (click)="savesection(sectionicon,sectionname,id,sectionArray,resumeIdArray)"> <i class="fa fa-add-to-list mr-1"></i> Save
+    </a>
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

@@ -1,0 +1,34 @@
+<!-- Navbar (Header) Starts -->
+<nav class="header-navbar navbar navbar-expand-lg navbar-light bg-faded">
+    <div class="container-fluid">
+            <div class="w-100 float-left">
+        <div class="navbar-header px-0">
+            <!-- <button type="button" class="navbar-toggle d-lg-none float-left" data-toggle="collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+          -->
+
+            <div class="position-relative has-icon-right">
+                <img  *ngIf="textDir==='ltr'" src="assets/img/logos/StylingCV-logo-en.svg" class="appLogo my-1" alt="StylingCV Resume Builder">
+                <img  *ngIf="textDir==='rtl'" src="assets/img/logos/StylingCV-logo-ar.svg" class="appLogo my-1" alt="StylingCV Resume Builder">
+            </div>
+
+
+        </div>
+       
+        <!-- right menu  -->
+        <app-navbar-right-menu (localeChanged)="localeChangedHandler($event)"></app-navbar-right-menu>
+
+        <!-- ./right menu -->
+    </div>
+</div>
+</nav>
+<!-- <div>
+    <router-outlet></router-outlet>
+
+</div> -->
+
+<!-- Navbar (Header) Ends -->

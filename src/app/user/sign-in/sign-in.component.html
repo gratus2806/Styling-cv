@@ -1,0 +1,96 @@
+<div class="row" [dir]="textDir">
+    <div class="col-12 offset-md-3 offset-lg-3 col-md-6 col-lg-6">
+
+        <div class="card card-signup">
+            <div class="cardbody">
+                <div class="card-block">
+                    <div class="row d-flex">
+
+                        <div class="col-12 col-sm-12  align-items-center p-4">
+                            <div *ngFor="let login of loginItems">
+                                <h6 class="blue-grey text-center  head-wLine mb-3">
+                                    <span>{{login.Login | translate}}</span>
+
+                                </h6>
+
+                                <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)" class=" w-100">
+
+                                    <div class="row">
+                                        <div class="col"> <a class="btn btn-social btn-min-width w-100 text-center   mb-2 btn-google" (click)="googlelogin()"><span class="fa fa-google"></span> Google</a></div>
+                                        <div class="col"><a class="btn btn-social btn-min-width  w-100 text-center   mb-2 btn-facebook" (click)="facebooklogin()"><span class="fa fa-facebook"></span> Facebook</a></div>
+                                        <div class="w-100"></div>
+                                        <div class="col"><a class="btn btn-social btn-min-width  w-100 text-center  mb-2 btn-linkedin" (click)="linkedinlogin()"><span class="fa fa-linkedin"></span> LinkedIn</a></div>
+                                        <div class="col"><a class="btn btn-social btn-min-width  w-100 text-center  mb-2 btn-twitter" (click)="twitterlogin()"><span class="fa fa-twitter"></span> Twitter</a></div>
+                                    </div>
+
+
+
+
+
+                                    <h6 class="blue-grey text-center head-wLine my-3">
+                                        <span>
+                                        {{login.or | translate}} <em class="text-bold-500">{{login.LogInwith | translate}} </em>
+                                    </span>
+                                    </h6>
+                                    <div class="input-group mb-2">
+                                        <input type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="{{login.Email | translate}}" [pattern]="emailRegex" required class="form-control" [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
+
+
+
+                                        <div *ngIf="signInForm.submitted && email.errors?.pattern" class="d-blockd-block w-100">
+                                            <label class="validation-message">{{login.Invalidemailaddress| translate}}</label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="input-group mb-1">
+                                        <input type="password" name="password" #password="ngModel" [(ngModel)]="model.password" placeholder="{{login.Password |translate}}" required class="form-control" minlength="4" [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }">
+
+
+
+                                        <div *ngIf="signInForm.submitted && password.errors?.minlength" class="d-blockd-block w-100">
+                                            <label class="validation-message">{{login.Minimum4characters| translate}}</label>
+                                        </div>
+                                    </div>
+                                                          <!-- Success message -->
+                                                          <div class="alert alert-secondary" type="success" role="alert" *ngIf="showSucessMessage">
+                                                            {{login.Registeredsuccessfully | translate}}
+                                                        </div>
+                    
+                                                        <!-- Error message -->
+                                                        <div class="alert" role="alert" class="alert alert-warning" *ngIf="serverErrorMessages">
+                                                            {{serverErrorMessages}}
+                                                        </div>
+                                                        
+                                    <!-- <a>Forgot password?</a> -->
+                                    <a href="!#" class="font-small-3 float-right" routerLink="/forgotPassword" routerLinkActive="active">{{login.ForgotPassword | translate}}</a>
+
+
+
+                                    <div class="form-group text-center">
+                                        <input type="submit" value="{{login.Login | translate}}" class="btn btn-raised mt-2 w-100  shadow-z-2 btn-primary">
+                                    </div>
+
+
+                                    <div class="col-12 center ">
+                                        <p class="text-center grey">
+                                            {{login.Donthaveanaccount | translate}}
+                                            <a href="!#" routerLink="/signup">{{login.Signup | translate}}</a>
+
+                                        </p>
+                                    </div>
+
+              
+
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
