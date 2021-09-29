@@ -43,7 +43,7 @@
     "classlist.js": "1.1.20150312",
     "core-js": "2.5.7",
     "d3": "5.7.0",
-    "datatables.net": "1.10.19",
+    "datatables.net": "1.11.3",
     "date-fns": "1.29.0",
     "intl": "1.2.5",
     "jquery": "^3.4.1",
